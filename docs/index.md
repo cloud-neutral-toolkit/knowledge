@@ -50,4 +50,4 @@ Managed PostgreSQL database service with cloud-neutral deployment options.
 
 ---
 
-*Last updated: 2026-01-26 12:28:55 UTC*
+*Last updated: $(date -u +"%Y-%m-%d %H:%M:%S UTC")*
