@@ -1,0 +1,47 @@
+title: Cloud-Neutral Toolkit Docs
+description: Public navigation for docs.svc.plus
+sections:
+  - title: Get started
+    items:
+      - title: Welcome
+        href: /docs/get-started/overview
+      - title: Quickstart
+        href: /docs/get-started/quickstart
+      - title: Project map
+        href: /docs/get-started/project-map
+  - title: Foundations
+    items:
+      - title: Overview
+        href: /docs/core-concepts/overview
+      - title: Information architecture
+        href: /docs/core-concepts/information-architecture
+      - title: Bilingual support
+        href: /docs/core-concepts/bilingual-support
+      - title: Publishing workflow
+        href: /docs/core-concepts/publishing-workflow
+  - title: Integrations
+    items:
+      - title: Overview
+        href: /docs/integrations/overview
+      - title: docs.svc.plus
+        href: /docs/integrations/docs-svc-plus
+      - title: Sync pipeline
+        href: /docs/integrations/sync-pipeline
+      - title: Console service docs
+        href: /docs/01-console/CONFIG_SYSTEM_SUMMARY
+      - title: Accounts service docs
+        href: /docs/02-accounts/SMTP_GMAIL_SETUP
+      - title: RAG server docs
+        href: /docs/03-rag-server/overview
+      - title: PostgreSQL docs
+        href: /docs/04-postgresql/overview
+  - title: Reference
+    items:
+      - title: Overview
+        href: /docs/reference/overview
+      - title: Content schema
+        href: /docs/reference/content-schema
+      - title: Coverage matrix
+        href: /docs/reference/coverage-matrix
+      - title: Legacy docs map
+        href: /docs/reference/legacy-docs

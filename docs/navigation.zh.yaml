@@ -1,0 +1,47 @@
+title: Cloud-Neutral Toolkit 文档
+description: docs.svc.plus 的公开导航结构
+sections:
+  - title: 开始使用
+    items:
+      - title: 欢迎页
+        href: /docs/get-started/overview
+      - title: 快速开始
+        href: /docs/get-started/quickstart
+      - title: 项目地图
+        href: /docs/get-started/project-map
+  - title: 基础认知
+    items:
+      - title: 总览
+        href: /docs/core-concepts/overview
+      - title: 信息架构
+        href: /docs/core-concepts/information-architecture
+      - title: 双语支持
+        href: /docs/core-concepts/bilingual-support
+      - title: 发布流程
+        href: /docs/core-concepts/publishing-workflow
+  - title: 集成关系
+    items:
+      - title: 总览
+        href: /docs/integrations/overview
+      - title: docs.svc.plus
+        href: /docs/integrations/docs-svc-plus
+      - title: 同步链路
+        href: /docs/integrations/sync-pipeline
+      - title: Console 服务文档
+        href: /docs/01-console/CONFIG_SYSTEM_SUMMARY
+      - title: Accounts 服务文档
+        href: /docs/02-accounts/SMTP_GMAIL_SETUP
+      - title: RAG Server 文档
+        href: /docs/03-rag-server/overview
+      - title: PostgreSQL 文档
+        href: /docs/04-postgresql/overview
+  - title: 参考资料
+    items:
+      - title: 总览
+        href: /docs/reference/overview
+      - title: 内容规范
+        href: /docs/reference/content-schema
+      - title: 覆盖矩阵
+        href: /docs/reference/coverage-matrix
+      - title: 历史文档映射
+        href: /docs/reference/legacy-docs

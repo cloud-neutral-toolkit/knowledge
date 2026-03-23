@@ -1,14 +1,26 @@
 # Knowledge Repository / 知识内容仓库
 
-This `docs/` directory now has a bilingual canonical layer for the current repository state.
+This `docs/` directory is the canonical input for `docs.svc.plus`.
 
-本 `docs/` 目录现已补齐双语规范层，用于承接当前仓库状态下的核心文档。
+本 `docs/` 目录是 `docs.svc.plus` 的规范入口。
 
 ## Quick Entry / 快速入口
 
 - Coverage checklist / 覆盖检查矩阵: `docs/DOC_COVERAGE.md`
 - English index / 英文入口: `docs/en/README.md`
 - 中文入口 / Chinese index: `docs/zh/README.md`
+- Navigation manifest / 导航清单: `docs/navigation.en.yaml`, `docs/navigation.zh.yaml`
+
+## Docs IA / 文档信息架构
+
+- `get-started/`
+- `core-concepts/`
+- `integrations/`
+- `reference/`
+
+These four collections define the public navigation for `docs.svc.plus`.
+
+这四个集合定义了 `docs.svc.plus` 面向用户的主导航。
 
 ## Canonical Bilingual Pages / 双语规范页
 

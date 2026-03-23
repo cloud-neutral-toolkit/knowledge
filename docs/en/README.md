@@ -1,34 +1,32 @@
-# Knowledge Repository Documentation
+---
+title: Cloud-Neutral Toolkit Docs
+description: English entry for docs.svc.plus, organized by onboarding, foundations, integrations, and reference.
+---
 
-This repository is content-centric and should document editorial structure, publishing workflow, and knowledge organization.
+# Cloud-Neutral Toolkit Docs
 
-## Current state snapshot
+This is the English home page for **`docs.svc.plus`**.
 
-- Root README title: `knowledge`
-- Build/runtime evidence: repository structure and scripts only
-- Primary directories detected: `scripts/`, `content/`
-- Existing docs count: 35
+The documentation is now grouped around four navigation lanes:
 
-## Canonical pages
+- **Get started**: entry pages for new readers
+- **Foundations**: architecture and operating model
+- **Integrations**: service and repository connections
+- **Reference**: schemas, coverage, and legacy maps
+
+## Recommended path
+
+1. [Welcome](/docs/get-started/overview)
+2. [Quickstart](/docs/get-started/quickstart)
+3. [Information architecture](/docs/core-concepts/information-architecture)
+4. [Integrations overview](/docs/integrations/overview)
+5. [Reference overview](/docs/reference/overview)
+
+## Existing canonical bilingual pages
 
 - [Architecture](architecture.md)
 - [Design](design.md)
 - [Deployment](deployment.md)
-- [User Guide](user-guide.md)
-- [Developer Guide](developer-guide.md)
-- [Vibe Coding Reference](vibe-coding-reference.md)
-
-## Legacy docs to fold in
-
-- `01-console/CONFIG_SYSTEM_SUMMARY.md`
-- `01-console/DESIGN_DOCS_REFACTOR.md`
-- `01-console/MIGRATION_GUIDE.md`
-- `01-console/Runbook/RAG-Server.md`
-- `02-accounts/SMTP_GMAIL_SETUP.md`
-- `03-rag-server/AGENTS.md`
-- `03-rag-server/IMPLEMENTATION_GUIDE.md`
-- `03-rag-server/PATH_VERIFICATION.md`
-- `03-rag-server/README.md`
-- `03-rag-server/Runbook/RAG-Server.md`
-- `03-rag-server/TOKEN_AUTH_MANUAL.md`
-- `03-rag-server/TOKEN_AUTH_SUMMARY.md`
+- [User guide](user-guide.md)
+- [Developer guide](developer-guide.md)
+- [Vibe coding reference](vibe-coding-reference.md)

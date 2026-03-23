@@ -1,15 +1,28 @@
-# 知识内容仓库 文档
+---
+title: Cloud-Neutral Toolkit 文档
+description: docs.svc.plus 的中文入口，按入门、基础、集成、参考四组组织。
+---
 
-该仓库以内容资产为主，文档重点是内容结构、发布流程与知识组织方式。
+# Cloud-Neutral Toolkit 文档
 
-## 当前状态快照
+这是 **`docs.svc.plus`** 的中文首页。
 
-- 根 README 标题: `knowledge`
-- 构建与运行时证据: repository structure and scripts only
-- 自动识别的主要目录: `scripts/`, `content/`
-- 现有文档数量: 35
+新的文档结构按四条稳定导航线组织：
 
-## 核心双语文档
+- **开始使用**：给首次进入的读者
+- **基础认知**：解释信息架构与运作方式
+- **集成关系**：说明服务仓库与文档入口的连接关系
+- **参考资料**：承接规范、矩阵与历史文档映射
+
+## 推荐阅读顺序
+
+1. [欢迎页](/docs/get-started/overview)
+2. [快速开始](/docs/get-started/quickstart)
+3. [信息架构](/docs/core-concepts/information-architecture)
+4. [集成总览](/docs/integrations/overview)
+5. [参考资料总览](/docs/reference/overview)
+
+## 现有双语规范页
 
 - [架构](architecture.md)
 - [设计](design.md)
@@ -17,18 +30,3 @@
 - [使用手册](user-guide.md)
 - [开发手册](developer-guide.md)
 - [Vibe Coding 参考](vibe-coding-reference.md)
-
-## 待归并的历史文档
-
-- `01-console/CONFIG_SYSTEM_SUMMARY.md`
-- `01-console/DESIGN_DOCS_REFACTOR.md`
-- `01-console/MIGRATION_GUIDE.md`
-- `01-console/Runbook/RAG-Server.md`
-- `02-accounts/SMTP_GMAIL_SETUP.md`
-- `03-rag-server/AGENTS.md`
-- `03-rag-server/IMPLEMENTATION_GUIDE.md`
-- `03-rag-server/PATH_VERIFICATION.md`
-- `03-rag-server/README.md`
-- `03-rag-server/Runbook/RAG-Server.md`
-- `03-rag-server/TOKEN_AUTH_MANUAL.md`
-- `03-rag-server/TOKEN_AUTH_SUMMARY.md`
