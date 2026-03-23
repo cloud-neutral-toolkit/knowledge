@@ -1,0 +1,1320 @@
+[
+  {
+    "date": "2026-03-16",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "Terraform / OpenTofu",
+    "source_file": "week-01.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Terraform / OpenTofu\n\nLayer: IaC & Delivery — Change Control\n\nOne-line verdict:\nInfrastructure changes should happen in code first.\nNot in the console. Not in memory.\n\nWhat it does:\n→ Declares desired state (not steps)\n→ Plan before apply — full diff before any change\n→ Manages multi-cloud with one model\n→ State file = explicit map of what actually exists\n\n✅ Strong fit:\n– Full audit trail built in\n– Rollback = reverting a commit\n– Works across AWS, GCP, Alibaba Cloud, bare metal\n\n⚠️ Real trade-offs:\n– State management requires discipline\n– Not for high-frequency, fine-grained ops\n\nOpenTofu: OSS fork. Same ecosystem. Community-governed. Neutral.\n\nIf scripts \"do things to the world\",\nTerraform defines what the world should look like.\n\n#IaC #Terraform #OpenTofu #CloudNative #DevOps"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-18",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "Serverless DB 迁移 0-1-100",
+    "source_file": "week-01.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/9 🧵\n\nFrontend on Vercel. Backend on Cloud Run.\nZero idle cost. Perfect elasticity.\n\nThen there's the database —\nthe one component that keeps billing you even when nobody's there. 💸\n\nHere's a 0→1→100 migration strategy for indie builders 👇\n\n#Serverless #IndieDev #Architecture"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/9\n\nThe core tension:\n\nFrontend/backend: no traffic = no cost. Smooth curve.\nDatabase: running = billing. Always.\n\nMost devs die on \"over-engineering\":\nSpinning up a $30/mo Cloud SQL before a single user exists.\n\nWe need to decouple \"connectivity\" from \"where data lives.\""
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/9\n\nStage 0 — Prototype & Validate\nTarget: < $5/mo (or $0)\n\nBest option: Serverless DB (Neon or Supabase)\n\nThey support Scale-to-Zero.\n→ No connections = compute sleeps (no charge)\n→ Request arrives = milliseconds to wake\n\nArchitecture:\nVercel → Cloud Run → Serverless DB (public connection)"
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/9\n\nStage 0 trade-offs:\n\n✅ Near-zero cost at start\n✅ Zero ops burden\n\n⚠️ Cold start: DB wake-up adds ~200–500ms\n\nRule: Start here. Ship the product loop first.\nDon't touch infrastructure until users exist."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/9\n\nStage 1 — Early Production\nTarget: $10–30/mo, eliminate cold starts\n\nBest option: Budget VPS (Hetzner/Linode) + self-hosted Docker Postgres\n\nProblem: Cloud Run has dynamic IPs.\nIP allowlists won't work for the DB connection."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/9\n\nStage 1 — The Connection Problem\n\nSolution: Secure tunnel sidecar\n\n→ Tailscale (recommended): Mesh VPN between Cloud Run and VPS\n→ Stunnel: Cloud Run sidecar, encrypted TCP tunnel to VPS\n\nYou get cheap VPS compute.\nYour data doesn't travel in the open."
+      },
+      {
+        "index": 7,
+        "kind": "reply",
+        "text": "7/9\n\nStage 100 — Large-Scale Production\nPriority: High Availability > Cost\n\nWhen a single point of failure is unacceptable:\n\nOption A: Managed Cloud SQL — pay for peace of mind\nOption B: Cloud-neutral: self-managed HA Postgres on K8s\n(CloudNativePG or similar)\n\nStability is the only metric at this stage."
+      },
+      {
+        "index": 8,
+        "kind": "reply",
+        "text": "8/9\n\nThe full route map:\n\n🔹 Stage 0  | Neon/Supabase    | ~$0    | PoC\n🔹 Stage 1  | VPS + Tunnel     | ~$10   | Growth\n🔹 Stage 100| Cloud SQL/K8s HA | $100+  | Scale\n\nCritical rule:\nDon't optimize for Stage 100 when you're in Stage 0."
+      },
+      {
+        "index": 9,
+        "kind": "reply",
+        "text": "9/9\n\nIf you're rebuilding an app today:\n\n1. Register a Serverless DB (Neon is fast)\n2. Point your Cloud Run env vars at it\n3. Ship something\n\nWhen real traffic arrives, come back for the Stage 1 tunnel setup.\n\nRT if this saves someone from over-engineering too early 🔄\n\n#IndieDev #SaaS #Serverless #CloudNative"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-20",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "PostgreSQL Extensions",
+    "source_file": "week-01.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | PostgreSQL (Extensions)\n\nLayer: Data & AI — Core Data Platform\n\nOne-line verdict:\nNot a new database. A platform that keeps growing\nwithout swapping its core.\n\nKey extensions:\n→ pgvector    — vector search for AI/RAG\n→ PostGIS     — geospatial, spatial indexes\n→ TimescaleDB — time-series (metrics, events)\n→ FDW         — query MySQL, Redis, S3 from inside PG\n→ pg_cron     — job scheduling inside the DB\n\nThe real question:\nCan a single database gain new capabilities\nwithout replacing the engine?\n\nPostgreSQL's answer: yes.\nExtensions are first-class citizens.\nNot plugins. Not hacks. Same transaction model.\n\n✅ Strong fit:\n– Core data hub for product systems\n– Reducing moving parts in your stack\n– Long-term platform you actually maintain\n\n⚠️ Not the right fit:\n– Pure OLAP at massive scale\n– When you need extreme single-dimension throughput\n\n\"Most databases get replaced. PostgreSQL gets extended.\"\n\n#PostgreSQL #DataEngineering #CloudNative #OpenSource"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-22",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "云不是信仰，是工具",
+    "source_file": "week-01.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "The Xiaohongshu \"leaving the cloud\" story wasn't about a vendor.\n\nHere's what it actually revealed:\n\nThe companies that can even discuss \"should we move off cloud\"\nare the ones who never got locked in.\n\n→ Kubernetes = workloads portable across infrastructure\n→ Open-source middleware = no vendor data captivity\n→ Hybrid by design = no single point of failure\n\nMost companies don't have this choice.\nThey were locked in before they knew it mattered.\n\n\"The cloud isn't a belief system. It's a tool.\"\n\nUse its elasticity for what it's good at.\nOwn the workloads that run 24/7 at scale.\n\n#CloudNeutral #CloudNative #Architecture #Platform"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-23",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "Cilium — eBPF 网络策略",
+    "source_file": "week-02.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Cilium\n\nLayer: Runtime & Boundary — Network Policy\n\nOne-line verdict:\neBPF brought networking into the kernel.\nCilium made that usable for production Kubernetes.\n\nWhat it does:\n→ Enforces L3/L4/L7 network policy at kernel level\n→ Replaces iptables — no more rule explosion at scale\n→ Transparent observability via Hubble (no sidecars)\n→ Service mesh capabilities without proxy overhead\n\n✅ Strong fit:\n– Large-scale Kubernetes clusters (100+ nodes)\n– Zero-trust networking requirements\n– Teams outgrowing iptables-based CNI\n\n⚠️ Real trade-offs:\n– Kernel version requirements (Linux 4.9+, ideally 5.10+)\n– Steeper learning curve than Calico/Flannel\n– eBPF expertise not yet common\n\nThe shift from iptables to eBPF isn't just performance.\nIt's a fundamentally different model for where policy lives.\n\n#Kubernetes #eBPF #CloudNative #NetworkSecurity #Cilium"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-25",
+    "weekday": "周三",
+    "kind": "longform",
+    "topic": "《小红书下云》深度分析",
+    "source_file": "week-02.md",
+    "preferred_time": "21:00",
+    "goal": "traffic",
+    "cta": "read / click-through",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "The \"Xiaohongshu leaving Alibaba Cloud\" story missed the real point.\n\n3 things it actually teaches us about cloud architecture:\n\n→ 1. Scale changes the math\n   Elasticity is cloud's strength.\n   Constant high-load workloads? That math flips.\n\n→ 2. Lock-in is a choice made early\n   Xiaohongshu could move because they stayed neutral:\n   K8s everywhere. Open-source middleware. No vendor data captivity.\n\n→ 3. Hybrid is the destination, not a compromise\n   Not anti-cloud. Not pro-self-hosting.\n   Use cloud for bursts. Own what runs 24/7.\n\nMost companies don't get to make this choice.\nThey were locked in before they knew it mattered.\n\nThe real story: cloud isn't a religion. It's a tool with a cost curve.\n\n#CloudNeutral #Architecture #Kubernetes #Platform"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-27",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "Prometheus — 指标体系标准",
+    "source_file": "week-02.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Prometheus\n\nLayer: Observability — Metrics Foundation\n\nOne-line verdict:\nThe metrics standard. Not because it's perfect —\nbecause the whole ecosystem converged on it.\n\nWhat it does:\n→ Pull-based scraping — services expose /metrics, Prometheus collects\n→ PromQL — expressive query language for time-series\n→ AlertManager — rule-based alerting with routing\n→ Service discovery — dynamic target registration\n\n✅ Strong fit:\n– Kubernetes-native monitoring (metrics already exposed)\n– Multi-cloud / cloud-neutral observability stack\n– Long-term metrics + alerting foundation\n\n⚠️ Real trade-offs:\n– Storage doesn't scale horizontally by default\n– Long-term retention needs Thanos / VictoriaMetrics / Mimir\n– Pull model struggles with ephemeral / serverless targets\n\nThe key insight:\nPrometheus didn't win because it's the best storage system.\nIt won because it defined the metrics contract.\nEveryone else builds around it.\n\n#Observability #Prometheus #CloudNative #SRE #Monitoring"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-29",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "不要在 Stage 0 操心 Stage 100",
+    "source_file": "week-02.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "Most engineering debt starts with a lie:\n\n\"We might need this at scale someday.\"\n\nThe $30/mo database before a single user.\nThe Kubernetes cluster for a 3-page app.\nThe microservices split before product-market fit.\n\nHere's what actually works:\n\nStage 0: Prove the loop works. Spend $0.\nStage 1: Handle real traffic. Spend $10-30.\nStage 100: Stability > cost. Spend accordingly.\n\nThe rule isn't \"don't think about the future.\"\nThe rule is: don't build for a stage you haven't reached.\n\nEvery premature optimization is a bet on a future\nthat probably won't look the way you imagined.\n\nShip first. Architect later.\n\n#IndieDev #SoloDev #Architecture #Engineering"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-30",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "Argo CD — GitOps 交付边界",
+    "source_file": "week-03.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Argo CD\n\nLayer: IaC & Delivery — GitOps\n\nOne-line verdict:\nGit becomes the single source of truth.\nArgo CD makes sure reality agrees with it — continuously.\n\nWhat it does:\n→ Watches Git repos for desired state (YAML/Helm/Kustomize)\n→ Continuously reconciles cluster state toward Git\n→ Automatic or manual sync — your call\n→ Multi-cluster management from one control plane\n→ Full UI + CLI + API\n\n✅ Strong fit:\n– Kubernetes-first delivery pipelines\n– Teams that need audit trails and rollback\n– Multi-env, multi-cluster deployment control\n\n⚠️ Real trade-offs:\n– Tightly coupled to Kubernetes\n– Requires shift from imperative to declarative thinking\n– Limited support for non-K8s deployments\n\nThe insight:\nArgo CD didn't invent GitOps.\nIt made GitOps something a team could actually run in production.\n\nRollback = git revert. That's the whole model.\n\n#GitOps #ArgoCD #Kubernetes #DevOps #CloudNative"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "从物理机到 K8s：复杂性管理史",
+    "source_file": "week-03.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/6 🧵\n\nFrom bare metal to Kubernetes, this isn't a \"tech upgrade\" story.\n\nIt's a story about how engineers kept moving the boundary\nbetween what humans control and what systems control.\n\n5 acts. One enemy: unmanaged complexity. 👇\n\n#Kubernetes #CloudNative #Platform #DevOps"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/6\n\nAct 1: Virtualization\n\nOne physical server. One app. Massive waste.\n\nKVM/QEMU changed the math:\nsplit one machine into many \"real enough\" machines.\n\nThe insight wasn't technical — it was economic.\nWhen hardware cost becomes visible, sharing stops being risky.\n\nComplexity moved inside the VM.\nHardware became a resource pool for the first time."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/6\n\nAct 2: Containers\n\nVMs solved sharing. But they brought the whole OS.\n\nContainers asked a dangerous question:\n\"Can we just bring the app, not the operating system?\"\n\nnamespace = \"you can't see mine\"\ncgroup = \"you can't eat mine\"\nDocker = made this explainable to developers\n\nOnce \"image = unit of delivery\" landed,\napps became portable. Infra stepped back."
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/6\n\nAct 3: Kubernetes\n\nContainers above 100 units break human cognition.\n\nKubernetes replaced:\n\"I understand every step\"\nwith:\n\"I trust it will keep correcting toward my declared state.\"\n\nThe shift: imperative ops → declarative intent.\n\nYou say: \"I want 3 replicas.\"\nThe system asks: \"How many do we actually have?\" — forever."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/6\n\nAct 4: Edge & Recursion (K3s / k3k)\n\nKubernetes assumed: stable network, full resources, expert ops.\n\nThe edge disagreed.\n\nK3s compressed the idea to fit constrained environments.\nk3k went further: treated the cluster itself as a resource.\n\nControl planes controlling control planes.\nYou're no longer deploying apps.\nYou're delivering replicable computing order."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/6\n\nThe pattern across all 5 acts:\n\nEach layer didn't eliminate complexity.\nIt moved it somewhere humans could still reason about.\n\nVMs → contained per-app chaos\nContainers → portable, reproducible units\nK8s → declared intent, continuous reconciliation\nK3s/k3k → cluster as deployable resource\n\nThe next system won't be \"smarter.\"\nIt'll know when to appear — and when to get out of the way.\n\n#Platform #Engineering #Kubernetes #CloudNative"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-03",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "Vault — Secrets 工程边界",
+    "source_file": "week-03.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | HashiCorp Vault\n\nLayer: Identity & Security — Secrets Management\n\nOne-line verdict:\nSecrets don't belong in env vars, config files, or your head.\nVault puts them in one auditable place.\n\nWhat it does:\n→ Centralized secret storage (API keys, certs, DB passwords)\n→ Dynamic secrets — generate credentials on-demand, auto-expire\n→ Fine-grained access policies (who can read what, when)\n→ Full audit log of every secret access\n→ PKI, SSH, cloud IAM integration\n\n✅ Strong fit:\n– Multi-service environments with many credentials\n– Teams that need audit trails for compliance\n– Dynamic DB credentials (major security win)\n\n⚠️ Real trade-offs:\n– Operational complexity — Vault itself needs to be highly available\n– Learning curve for policy model\n– Self-managed Vault requires real ops maturity\n\nThe key boundary:\nVault doesn't secure your app.\nIt defines a clear engineering contract for how secrets move.\n\n\"The most dangerous secret is the one nobody knows is there.\"\n\n#Security #Secrets #Vault #CloudNative #DevSecOps"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-05",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "Kubernetes 不管理机器，它管理期望",
+    "source_file": "week-03.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "Kubernetes doesn't manage machines.\nIt doesn't manage containers.\n\nIt manages the gap between\nwhat you said you wanted\nand what's actually running.\n\nThat's the whole model.\n\nYou declare intent.\nThe control loop asks \"how far are we from intent?\" — forever.\nWhen something breaks, it doesn't page you first.\nIt tries to fix it first.\n\nThis is why K8s feels hard to learn but hard to give up.\n\nYou're not learning a deployment tool.\nYou're learning to think in declared states\ninstead of executed steps.\n\nThat's a different mental model.\nNot harder — different.\n\n#Kubernetes #Platform #CloudNative #Engineering"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-06",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "OpenTelemetry — 可观测性中立标准",
+    "source_file": "week-04.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | OpenTelemetry\n\nLayer: Observability — Neutral Instrumentation Standard\n\nOne-line verdict:\nStop choosing between observability vendors.\nOTel separates instrumentation from where data goes.\n\nWhat it does:\n→ Unified SDK for traces, metrics, and logs\n→ Vendor-agnostic — instrument once, export anywhere\n→ Auto-instrumentation for most major frameworks\n→ Collector: pipeline, filtering, routing, transformation\n→ CNCF graduated project — stable, broad adoption\n\n✅ Strong fit:\n– Multi-cloud / cloud-neutral observability stack\n– Teams tired of re-instrumenting when changing backends\n– Polyglot services (Java, Go, Python, Node all supported)\n\n⚠️ Real trade-offs:\n– Spec is complex — not everything is GA across all signals\n– Logs support still maturing in some SDKs\n– Collector requires its own ops attention\n\nThe key insight:\nOpenTelemetry doesn't store anything.\nIt defines the contract for how observability data moves.\n\nJaeger, Grafana, Datadog, Honeycomb — they all accept OTel.\nYou decide where data lives. OTel decides the format.\n\n#Observability #OpenTelemetry #CloudNative #CNCF #DevOps"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-08",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "Solo Founder 的分布式服务边界",
+    "source_file": "week-04.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/6 🧵\n\nSolo building means constantly fixing things that almost work.\n\nAfter weeks of iteration on a distributed system —\nfrontend, auth, RAG server, database —\nhere's what I learned about service boundaries as a single person.\n\n#SoloDev #IndieDev #Architecture #SaaS"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/6\n\nThe temptation: keep everything in one repo, one service.\n\nThe problem: one mess is still a mess, just faster to create.\n\nWhat actually helped:\nClear service boundaries — not for scale, but for thinking.\n\nFrontend / Auth / RAG / Database.\nEach has one job. Each fails independently.\nWhen something breaks, you know where to look."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/6\n\nThe hardest part isn't the split.\n\nIt's maintaining context across services when you're alone.\n\nMost tools forget what they helped you build last week.\n\nWhat I needed wasn't speed.\nIt was continuity — something that stayed with the system\nacross refactors instead of resetting every session."
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/6\n\nReal debugging for solo builders doesn't happen in a sandbox.\n\nIt happens across:\nbrowser → GitHub → Cloud Run → Vercel\n\nThe system is the debug environment.\nYou need tools that can follow you there —\nnot just read the code, but understand what's deployed."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/6\n\nAfter the refactor:\n\n✅ Login works\n✅ Signup + MFA works  \n✅ AI assistant restored\n✅ Core flows back\n\nThe UI still isn't pretty (yet 😅).\n\nBut here's what matters as a solo builder:\nYou don't need magic.\nYou need to get the system back into a stable, shippable state."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/6\n\nDistributed services for one person is a choice, not a mistake.\n\nThe boundary isn't about team size.\nIt's about fault isolation and cognitive load.\n\nWhen auth breaks, it breaks auth — not everything.\nWhen the RAG server needs to be rewritten, everything else keeps running.\n\nBuild for maintainability first.\nScale is someone else's problem for now.\n\n#SoloDev #IndieDev #CloudNative #Architecture"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-10",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "APISIX — API 网关中立选择",
+    "source_file": "week-04.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Apache APISIX\n\nLayer: Runtime & Boundary — API Gateway\n\nOne-line verdict:\nHigh-performance API gateway, cloud-neutral by design.\nNo vendor lock-in baked into the data plane.\n\nWhat it does:\n→ Dynamic routing, load balancing, rate limiting\n→ Plugin architecture — extend without forking\n→ Multi-protocol: HTTP, gRPC, WebSocket, Dubbo\n→ Native Kubernetes ingress + service mesh integration\n→ Apache-governed — truly open source\n\n✅ Strong fit:\n– Teams escaping cloud-native API gateway vendor lock-in\n– High-throughput API traffic (built on Nginx/OpenResty)\n– Complex routing logic, custom plugin requirements\n\n⚠️ Real trade-offs:\n– Smaller ecosystem than Kong in some enterprise areas\n– Lua plugin model has a learning curve\n– Observability plugins need deliberate configuration\n\nThe comparison that matters:\nKong: established enterprise ecosystem\nAPISIX: newer, faster, genuinely cloud-neutral architecture\n\nIf your API gateway routes are a vendor contract,\nAPISIX is worth the migration cost.\n\n#APISIX #APIGateway #CloudNative #OpenSource #Kubernetes"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-12",
+    "weekday": "周日",
+    "kind": "longform",
+    "topic": "《从物理机到云端》复杂性工程史",
+    "source_file": "week-04.md",
+    "preferred_time": "21:00",
+    "goal": "traffic",
+    "cta": "read / click-through",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "I wrote about the real history of infrastructure complexity.\n\nNot \"tech got better over time.\"\n\nIt's about how engineers kept moving the boundary\nbetween human control and system control —\none layer at a time.\n\n5 key ideas:\n\n→ VMs didn't solve complexity. They moved it inside a boundary.\n→ Containers didn't replace VMs. They changed the unit of delivery.\n→ Kubernetes manages intent, not machines.\n→ K3s proved the idea compresses to fit constraints.\n→ k3k treats clusters as resources — control planes controlling control planes.\n\nThe pattern isn't progress.\nIt's redistribution.\n\nEvery generation doesn't eliminate complexity.\nIt moves it somewhere humans can still reason about.\n\nFull piece in the replies 👇\n\n#Platform #Engineering #Kubernetes #CloudNative #DevOps"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-13",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "ZITADEL — 身份认证现代选项",
+    "source_file": "week-05.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | ZITADEL\n\nLayer: Identity & Security — AuthN/AuthZ Platform\n\nOne-line verdict:\nKeycloak for teams who want modern DevX\nwithout the XML configuration archaeology.\n\nWhat it does:\n→ OIDC / OAuth2 / SAML identity provider\n→ Built-in multi-tenancy (organizations)\n→ Fine-grained RBAC + custom roles\n→ Machine-to-machine auth with service accounts\n→ Audit log on every identity event\n\n✅ Strong fit:\n– B2B SaaS products needing org-level identity\n– Teams building auth from scratch (vs. inheriting Keycloak)\n– Cloud-neutral identity that runs anywhere\n\n⚠️ Real trade-offs:\n– Smaller ecosystem than Keycloak for enterprise integrations\n– Less battle-hardened at extreme scale\n– Community edition has feature limits vs. Cloud\n\nThe comparison:\nKeycloak: proven, powerful, steep ops overhead\nZITADEL: modern API-first, better DevX, growing adoption\n\n\"The auth system you don't control will eventually control you.\"\n\n#Identity #ZITADEL #Auth #CloudNative #Security"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-15",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "ZITADEL vs Keycloak 选型对比",
+    "source_file": "week-05.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/6 🧵\n\nIdentity is the one system you can't easily replace.\n\nKeycloak or ZITADEL?\nBoth are open-source. Both are cloud-neutral.\nThe answer depends on what you're building.\n\nHere's the honest comparison 👇\n\n#Identity #Auth #OpenSource #CloudNative"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/6\n\nKeycloak — The battle-hardened enterprise choice\n\n✅ 10+ years of production use\n✅ Massive ecosystem (LDAP, SAML, every enterprise protocol)\n✅ Huge community, extensive docs\n\n⚠️ Painful XML/UI configuration\n⚠️ Heavy JVM footprint\n⚠️ Multi-tenancy is an afterthought, not a first-class feature"
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/6\n\nZITADEL — The modern API-first challenger\n\n✅ Multi-tenancy built in (organizations as first-class concept)\n✅ Clean Go codebase, lower resource footprint\n✅ API-first design — everything is automatable\n✅ Better developer experience out of the box\n\n⚠️ Smaller enterprise ecosystem\n⚠️ Less battle-tested at Keycloak scale\n⚠️ Some enterprise features require paid tier"
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/6\n\nThe real decision matrix:\n\nBuilding a B2B SaaS product?\n→ ZITADEL (orgs are core, not bolted on)\n\nReplacing an existing enterprise SSO?\n→ Keycloak (protocol support breadth wins)\n\nGreenfield, you control the stack?\n→ ZITADEL (developer velocity matters more early)\n\nLegacy LDAP/AD integration required?\n→ Keycloak (hands down)"
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/6\n\nBoth choices share one property: cloud-neutral.\n\nNeither locks you to AWS Cognito, Azure AD, or Okta.\nBoth run on your infrastructure.\nBoth support OIDC/OAuth2 — the open standard.\n\nThe identity system is where lock-in is most invisible.\nChoosing open-source here is an architectural decision,\nnot just a cost decision."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/6\n\nBottom line:\n\nIf you're starting new → ZITADEL\nIf you're enterprise/legacy → Keycloak\nIf you're already on Keycloak → stay unless pain is real\n\nThe worst outcome: choosing the managed SaaS option\nbecause \"auth is hard.\"\n\nAuth IS hard. That's why owning it matters.\n\n#Identity #ZITADEL #Keycloak #Auth #CloudNeutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-17",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "Grafana — 可观测性可视化层",
+    "source_file": "week-05.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Grafana\n\nLayer: Observability — Visualization & Dashboarding\n\nOne-line verdict:\nThe visualization layer for every observability backend.\nNot a database — a window into whatever you're running.\n\nWhat it does:\n→ Unified dashboards across Prometheus, Loki, Tempo, and 50+ sources\n→ Alerting with notification routing\n→ Explore mode — ad-hoc metric/log/trace investigation\n→ Plugin ecosystem: new data sources without vendor lock-in\n\n✅ Strong fit:\n– Observability stacks with multiple backends (Prometheus + Loki + Tempo)\n– Teams that need one UI across cloud and on-prem data\n– Anyone who's outgrown vendor dashboards\n\n⚠️ Real trade-offs:\n– Dashboard management at scale needs discipline (too easy to have 200 unused dashboards)\n– Enterprise features (RBAC, SSO) require paid Grafana Enterprise or Cloud\n– Not a replacement for proper alerting infrastructure\n\nThe key insight:\nGrafana doesn't care where your data lives.\nThat's what makes it cloud-neutral by design.\n\n#Grafana #Observability #CloudNative #Monitoring #OpenSource"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-19",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "身份系统是你最不该锁死的东西",
+    "source_file": "week-05.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "The auth system you don't own\nwill eventually make decisions for you.\n\nNot dramatically. Just quietly:\n\n→ Price increase at renewal\n→ Feature gated behind \"enterprise\"\n→ API changed with 90 days notice\n→ Your compliance team suddenly needs a feature that doesn't exist\n\nIdentity is the one dependency that touches everything.\n\nEvery user. Every service. Every API call.\n\nIf your identity layer is a managed SaaS you don't control —\nthat's not a vendor relationship.\nThat's a structural dependency.\n\nOpen-source identity (Keycloak, ZITADEL, Dex) isn't paranoia.\nIt's the same logic as owning your database.\n\n#CloudNeutral #Identity #Auth #Architecture #OpenSource"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-20",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "FluxCD — GitOps 另一种实现",
+    "source_file": "week-06.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | FluxCD\n\nLayer: IaC & Delivery — GitOps (Pull-based)\n\nOne-line verdict:\nGitOps without the UI.\nPure operator model — Git is truth, cluster pulls toward it.\n\nWhat it does:\n→ Watches Git repos / Helm registries / OCI artifacts\n→ Automatic reconciliation — no push pipelines needed\n→ Kustomize + Helm native support\n→ Multi-tenancy via GitRepository isolation\n→ CNCF graduated — production stable\n\n✅ Strong fit:\n– Teams preferring operator-pattern over centralized control plane\n– Multi-tenant platform engineering\n– Integration-first workflows (pairs well with Terraform, Crossplane)\n\n⚠️ Real trade-offs:\n– No built-in UI (vs. Argo CD's dashboard)\n– Steeper initial configuration vs. Argo CD\n– Debugging reconciliation failures requires CLI fluency\n\nFluxCD vs Argo CD:\nNot better or worse — different philosophy.\nFlux: distributed operator model. Argo: centralized control.\n\nThe question: do you want a dashboard or do you want operators all the way down?\n\n#FluxCD #GitOps #Kubernetes #CloudNative #DevOps"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-22",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "VictoriaMetrics vs Prometheus：真实边界",
+    "source_file": "week-06.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/7 🧵\n\nPrometheus is the metrics standard.\nVictoriaMetrics is what you run when Prometheus runs out of road.\n\nHere's the honest comparison for production teams 👇\n\n#Prometheus #VictoriaMetrics #Observability #CloudNative"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/7\n\nWhy Prometheus hits limits:\n\n→ Single-node storage — horizontal scaling requires Thanos/Cortex/Mimir\n→ Long-term retention gets expensive fast\n→ High-cardinality metrics cause memory spikes\n→ Federation at scale is operationally complex\n\nNone of these are bugs. Prometheus was designed for a different scope.\nWhen you outgrow it, you need to know where to go."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/7\n\nVictoriaMetrics: what changes\n\n✅ 5-10x better compression (same data, fraction of disk)\n✅ Handles high-cardinality metrics without OOM\n✅ Horizontal scaling built in (VM cluster mode)\n✅ PromQL compatible — no migration of dashboards/alerts\n✅ Single binary for small deployments — simpler than Prometheus + Thanos"
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/7\n\nWhat stays the same:\n\nBoth are open-source.\nBoth are cloud-neutral — deploy anywhere.\nBoth speak PromQL (VM has MetricsQL extension).\nBoth integrate with Grafana natively.\n\nVictoriaMetrics doesn't replace your Prometheus ecosystem.\nIt replaces the Prometheus storage layer."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/7\n\nWhen to stay on Prometheus:\n\n→ You're below ~500k active time series\n→ You don't need long-term retention (30d+ gets expensive)\n→ Your team already knows Prometheus well\n→ You're running it alongside Thanos and it's working\n\nDon't migrate because VictoriaMetrics is \"better.\"\nMigrate when Prometheus is costing you real ops time."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/7\n\nWhen to switch to VictoriaMetrics:\n\n→ Prometheus OOM at high cardinality\n→ Long-term retention (90d+) is eating storage budget\n→ Multi-cluster metrics aggregation needed\n→ You want simpler ops (one VM cluster vs. Prometheus + Thanos + Cortex)\n\nThe migration path is clean: VM accepts remote_write from Prometheus.\nYou can run both in parallel during transition."
+      },
+      {
+        "index": 7,
+        "kind": "reply",
+        "text": "7/7\n\nBottom line:\n\nPrometheus: instrument everything against the standard\nVictoriaMetrics: store and query at scale\n\nThey're not competitors. They're complements.\n\nThe cloud-neutral observability stack:\n→ OpenTelemetry (instrumentation)\n→ Prometheus (collection + short-term)\n→ VictoriaMetrics (long-term, high-scale storage)\n→ Grafana (visualization)\n\nNone of them require a vendor. All of them interoperate.\n\n#Observability #VictoriaMetrics #Prometheus #CloudNeutral #SRE"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-24",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "containerd — 容器运行时的边界",
+    "source_file": "week-06.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | containerd\n\nLayer: Runtime & Boundary — Container Runtime\n\nOne-line verdict:\nThe container runtime that runs your containers.\nNot the one you think about — the one that actually does the work.\n\nWhat it does:\n→ Pulls images, manages storage, runs containers\n→ CRI (Container Runtime Interface) compliant — K8s talks to it directly\n→ OCI-standard image format support\n→ Snapshotters, plugins, namespace isolation\n→ CNCF graduated — used in almost every K8s distribution\n\n✅ Strong fit:\n– Default choice for K8s production deployments\n– Teams moving away from Docker-as-runtime (Docker ≠ containerd)\n– Stable, minimal surface area runtime\n\n⚠️ Real trade-offs:\n– Not user-facing — most engineers never interact with it directly\n– Debugging at runtime level requires crictl/ctr\n– Image build is not its job (use BuildKit, Kaniko, etc.)\n\nThe important distinction:\nDocker = developer toolchain (build + run + push)\ncontainerd = production runtime (run only)\n\nKubernetes deprecated Dockershim because it needed\na direct CRI implementation. containerd is that.\n\n#containerd #Kubernetes #ContainerRuntime #CloudNative #CNCF"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-26",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "开源不是情怀，是工程决策",
+    "source_file": "week-06.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "Open source isn't a philosophy.\nIt's an engineering decision.\n\nHere's the actual trade:\n\nYou get:\n→ No vendor lock-in on the data layer\n→ Full control over upgrade timing\n→ Ability to patch, fork, contribute\n→ Community that outlasts any single company\n\nYou give:\n→ Ops responsibility (you run it)\n→ Support responsibility (you fix it)\n→ Engineering time (you maintain it)\n\nThe question isn't \"open source vs. SaaS.\"\nThe question is: which dependencies are you willing to own?\n\nFor database, identity, observability, and delivery infrastructure —\nowning makes sense. The vendor alternative is a structural dependency.\n\nFor payment processing, email deliverability, fraud detection —\nSaaS makes sense. Building those is not your competitive advantage.\n\nKnow the difference. Choose deliberately.\n\n#CloudNeutral #OpenSource #Engineering #Architecture"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-27",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "DuckDB — 当 OLAP 不需要集群",
+    "source_file": "week-07.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | DuckDB\n\nLayer: Data & AI — Analytical Query Engine\n\nOne-line verdict:\nOLAP that runs in-process.\nNo cluster. No server. Just a file and a query.\n\nWhat it does:\n→ Column-oriented analytical engine — runs inside your application\n→ Reads Parquet, CSV, JSON, Arrow natively\n→ SQL-first, PostgreSQL-compatible dialect\n→ In-memory or persistent file mode\n→ Single binary, embeds in Python/Node/Go/Java\n\n✅ Strong fit:\n– Data scientists running analytics on laptops (no Spark cluster)\n– Log analysis, metrics exploration, ad-hoc queries on files\n– Replacing pandas for medium-scale data work\n– Edge analytics where a server isn't available\n\n⚠️ Real trade-offs:\n– Single-node only — no horizontal scale\n– Not designed for concurrent writes or OLTP\n– Large datasets eventually need something else (ClickHouse, Databend)\n\nThe question DuckDB answers:\nDoes analytical work always require a cluster?\n\nFor datasets under ~100GB: no.\nA local process with a Parquet file beats a distributed system\nfor complexity, cost, and operational overhead.\n\n\"OLAP doesn't need to be a service. Sometimes it just needs to be a library.\"\n\n#DuckDB #DataEngineering #Analytics #OpenSource #CloudNeutral"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-29",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "Pulumi vs Terraform：代码即基础设施",
+    "source_file": "week-07.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/6 🧵\n\nTerraform is the IaC standard.\nPulumi lets you write infrastructure in real code.\n\nBoth are cloud-neutral. Both are open-source.\nThe difference matters more than people admit.\n\nHere's the honest comparison 👇\n\n#IaC #Terraform #Pulumi #CloudNative #DevOps"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/6\n\nTerraform's model:\n\nHCL (HashiCorp Configuration Language)\n→ Declarative: describe what you want\n→ Plan/Apply: full diff before any change\n→ State file: explicit map of reality\n→ 14 years of ecosystem maturity\n\nThe strength: everyone can read it.\nThe limit: HCL isn't Turing-complete. Complex logic gets ugly."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/6\n\nPulumi's model:\n\nReal programming languages (TypeScript, Python, Go, Java, C#)\n→ Same declarative intent, real code\n→ Loops, conditionals, functions — natural\n→ Reusable infrastructure as library packages\n→ Same plan/apply model as Terraform\n\nThe strength: complex infrastructure logic without workarounds.\nThe limit: steeper onboarding if your team isn't developers."
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/6\n\nWhen to choose Terraform:\n\n→ Team is ops-heavy, not developer-heavy\n→ You need maximum ecosystem compatibility (providers, modules)\n→ Existing HCL investment is significant\n→ You want the \"everyone knows this\" option\n\nOpenTofu note: if you're on Terraform, consider OpenTofu.\nSame HCL, same ecosystem, community-governed, truly neutral."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/6\n\nWhen to choose Pulumi:\n\n→ Infrastructure is complex enough that HCL becomes a limitation\n→ Your team writes code daily — IaC should feel like code\n→ You want to publish infrastructure as reusable packages\n→ You're building an internal platform on top of IaC\n\nThe crossover point: when your Terraform modules need\n\"if the environment is production and the region is X and the team is Y...\""
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/6\n\nBottom line:\n\nBoth are cloud-neutral.\nBoth have plan-before-apply.\nBoth manage state.\n\nTerraform: stable, universal, slight HCL ceiling\nPulumi: full programming model, higher DevX ceiling\n\nThe worst choice: vendor-specific IaC (AWS CDK, Azure Bicep).\nThat's not IaC — that's vendor lock-in with extra steps.\n\n#IaC #CloudNeutral #Terraform #Pulumi #OpenTofu"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-01",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "ClickHouse — 实时分析的工程边界",
+    "source_file": "week-07.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | ClickHouse\n\nLayer: Data & AI — Real-time Analytics\n\nOne-line verdict:\nIf you need to scan billions of rows in seconds,\nClickHouse is where the conversation starts.\n\nWhat it does:\n→ Column-oriented OLAP database\n→ Real-time inserts + analytical queries on the same system\n→ Vectorized query execution — extreme single-query throughput\n→ MergeTree engine family — efficient for time-series / event data\n→ SQL interface, rich ecosystem\n\n✅ Strong fit:\n– Product analytics (events, sessions, funnels)\n– Infrastructure monitoring at scale (logs, metrics storage)\n– Ad-tech, fintech time-series workloads\n– Replacing Elasticsearch for log analytics\n\n⚠️ Real trade-offs:\n– Not for OLTP — writes are batched, not row-level\n– JOINs are expensive — denormalized schemas work better\n– Operational complexity at scale (sharding, replication)\n– Schema design requires upfront thought\n\nThe comparison:\nDuckDB: single-node, in-process, ~100GB scale\nClickHouse: distributed, server, billion-row scale\n\nSame family. Different scope.\n\n#ClickHouse #DataEngineering #Analytics #CloudNeutral #OpenSource"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-03",
+    "weekday": "周日",
+    "kind": "longform",
+    "topic": "AI 与工程写作链路实战",
+    "source_file": "week-07.md",
+    "preferred_time": "21:00",
+    "goal": "traffic",
+    "cta": "read / click-through",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "I've been using AI in my daily engineering work for over a year.\n\nNot for code generation (that's table stakes now).\n\nFor something harder: building and maintaining a writing practice\nas a solo engineer.\n\n3 things that actually changed how I work:\n\n→ 1. AI doesn't write for me. It helps me not lose the thread.\n   Across browser, GitHub, Cloud Run, and Vercel — real system context,\n   not sandboxed imagination.\n\n→ 2. Continuity beats speed.\n   The most valuable thing isn't writing faster.\n   It's having something that stays with the system across weeks.\n   Context doesn't reset when I come back on Tuesday.\n\n→ 3. The writing is the thinking.\n   Explaining a technical decision in plain language\n   is how I find out if I actually understand it.\n\nThe blog post from this year that changed how I think:\n\"AI tools don't save time. They save cognitive load.\"\n\nThat's the right frame.\n\n#AI #Engineering #SoloDev #Writing #IndieDev"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-04",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "Keycloak — 企业级身份管理",
+    "source_file": "week-08.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Keycloak\n\nLayer: Identity & Security — Enterprise Identity Platform\n\nOne-line verdict:\nThe battle-hardened open-source choice\nfor enterprise-grade identity and access management.\n\nWhat it does:\n→ OIDC, OAuth2, SAML 2.0 — every enterprise protocol\n→ SSO across multiple applications\n→ LDAP/AD federation — bridges legacy identity systems\n→ Social login, MFA, user federation\n→ Admin UI + REST API + fine-grained authorization\n→ Red Hat / Community supported\n\n✅ Strong fit:\n– Replacing Active Directory as identity hub\n– Enterprise SSO with LDAP integration\n– Regulated industries (healthcare, finance) needing audit trails\n– Proven at large scale\n\n⚠️ Real trade-offs:\n– JVM-based — heavier resource footprint\n– Complex to configure, especially multi-realm setups\n– Multi-tenancy requires careful realm management\n– Admin UI historically complex (new Keycloak UI improved this)\n\nWhen Keycloak wins:\nLegacy LDAP integration? Keycloak.\nRegulated enterprise with SAML requirements? Keycloak.\nNeed proven large-scale battle-testing? Keycloak.\n\n\"Complex to configure, but you won't outgrow it.\"\n\n#Keycloak #Identity #Auth #OpenSource #Enterprise #Security"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-06",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "FluxCD vs Argo CD：GitOps 选型",
+    "source_file": "week-08.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/7 🧵\n\nBoth Flux and Argo CD implement GitOps.\nBoth are CNCF graduated.\nBoth are battle-tested in production.\n\nThe choice between them is a philosophy choice.\n\nHere's what actually separates them 👇\n\n#GitOps #FluxCD #ArgoCD #Kubernetes #DevOps"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/7\n\nArgo CD: centralized control plane\n\n→ Single dashboard — full visibility into all clusters\n→ Manual sync + auto-sync modes in one UI\n→ Application health, rollback, diff — all from one place\n\nBest for: teams that want to see everything in one place.\nWeakness: the control plane itself becomes a dependency."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/7\n\nFluxCD: distributed operator model\n\n→ No central dashboard by default — pure operator pattern\n→ Each cluster manages its own reconciliation\n→ Higher trust in the declarative model — less \"let me click sync\"\n\nBest for: platform teams building multi-tenant K8s infrastructure.\nWeakness: harder to onboard engineers who want a UI."
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/7\n\nWhere they actually converge:\n\nBoth:\n→ Watch Git repos for desired state\n→ Reconcile cluster toward Git continuously\n→ Support Helm, Kustomize, raw YAML\n→ Multi-cluster capable\n→ CNCF graduated, production stable\n→ Cloud-neutral (no vendor requirement)\n\nThe fundamentals are identical.\nThe UI/operator philosophy diverges."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/7\n\nTeam composition matters here:\n\nArgo CD fits better when:\n→ Mixed DevOps/developer teams need shared visibility\n→ Ops team manages deployments, dev teams check status\n→ You want approval workflows with UI\n\nFluxCD fits better when:\n→ Platform engineering team runs infrastructure-as-code\n→ Everything-in-Git is a hard requirement\n→ Multi-tenancy at cluster level is the design goal"
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/7\n\nThe migration question:\n\nCan you switch later? Technically yes.\nBut the tooling, workflows, and team mental models are different.\n\nThe real cost of switching isn't the migration.\nIt's the re-training.\n\nChoose for your team's operating model,\nnot for the benchmark comparisons."
+      },
+      {
+        "index": 7,
+        "kind": "reply",
+        "text": "7/7\n\nRecommendation framework:\n\nSmall team, visible deployments needed → Argo CD\nPlatform team, multi-tenant, pure GitOps → FluxCD\nAlready on one of them → stay, they're both excellent\n\nThe wrong choice: staying on push-based pipelines\nbecause \"we haven't decided yet.\"\n\nGitOps isn't a tool decision.\nIt's a commitment to Git as the source of truth.\nPick one. Start.\n\n#GitOps #FluxCD #ArgoCD #CloudNeutral #Kubernetes"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-08",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "Nginx — 仍在边界上的反向代理",
+    "source_file": "week-08.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Nginx\n\nLayer: Runtime & Boundary — Reverse Proxy / Load Balancer\n\nOne-line verdict:\n25 years old. Still on the boundary of most production systems.\nNot because there's nothing better — because it works.\n\nWhat it does:\n→ Reverse proxy, load balancer, static file serving\n→ TLS termination\n→ Rate limiting, access control\n→ Extensible via Lua (OpenResty) or modules\n→ Runs everywhere — bare metal, Docker, K8s ingress\n\n✅ Strong fit:\n– Edge/entry layer for web traffic\n– TLS termination before internal services\n– Static asset serving\n– Low-overhead reverse proxy for high concurrency\n\n⚠️ Real trade-offs:\n– Config is powerful but not developer-friendly\n– Dynamic config changes require reload (though nginx-plus solves this)\n– Not a full API gateway (see APISIX/Kong for that)\n\nStill relevant because:\nThe entry layer of your system doesn't need to be complex.\nNginx does one thing extremely well.\n\n\"The boring choice is often the correct choice at the boundary.\"\n\n#Nginx #CloudNative #WebServer #ReverseProxy #Infrastructure"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-10",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "GitOps 不是工具，是治理模型",
+    "source_file": "week-08.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "GitOps isn't a tool.\nIt's a governance model.\n\nThe claim: Git is the single source of truth for system state.\n\nWhat that means in practice:\n\n→ Every desired state change goes through a pull request\n→ Every deployment is traceable to a commit\n→ Rollback = git revert (not \"figure out what changed\")\n→ Drift = detectable and correctable automatically\n\nThe hard part isn't the tooling.\nArgo CD and FluxCD are both excellent.\n\nThe hard part is organizational:\n\n\"Someone needs to be able to click deploy on an emergency at 2am\"\n→ That's a valid concern. Solve it with an emergency process.\n   Don't solve it by abandoning the model.\n\nGitOps forces you to answer:\nWhat does \"desired state\" mean for your system?\n\nThat question is worth answering whether or not you adopt the tooling.\n\n#GitOps #DevOps #CloudNative #Engineering #Platform"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-11",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "k3s — 轻量 Kubernetes 的真实场景",
+    "source_file": "week-09.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | k3s\n\nLayer: Platform Foundation — Lightweight Kubernetes\n\nOne-line verdict:\nKubernetes, compressed.\nSame API. Same declarative model. 60MB binary.\n\nWhat it does:\n→ Fully conformant Kubernetes distribution\n→ Replaces etcd with SQLite (or external DB for HA)\n→ Bundles containerd, CoreDNS, Traefik, Helm controller\n→ ARM and x86 support — IoT/edge to VPS\n→ Single binary install, 512MB RAM minimum\n\n✅ Strong fit:\n– Edge nodes, IoT devices, resource-constrained environments\n– Dev/test clusters (fast spin-up)\n– Small production deployments ($5 VPS can run it)\n– Multi-site edge with consistent K8s API\n\n⚠️ Real trade-offs:\n– Less tested at massive scale than full K8s\n– Default config (SQLite) limits HA without external DB\n– Some enterprise K8s features require additional setup\n\nThe key point:\nk3s isn't \"K8s for beginners.\"\nIt's K8s for environments where full K8s is too heavy.\n\nThe idea compresses. The API stays the same.\n\n#k3s #Kubernetes #Edge #CloudNative #OpenSource"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-13",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "K3s + k3k：把集群变成资源",
+    "source_file": "week-09.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/6 🧵\n\nKubernetes manages pods.\nk3s made Kubernetes fit constrained environments.\nk3k made clusters themselves a resource.\n\nThis is the recursion at the edge of cloud-neutral infrastructure.\n\nLet me explain 👇\n\n#Kubernetes #k3s #k3k #Platform #CloudNative"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/6\n\nK3s: Kubernetes, compressed\n\nSame API. Same declarative model.\nBut: 60MB binary, 512MB RAM, runs on a $5 VPS.\n\nThe insight: the *idea* of Kubernetes (declare intent, reconcile toward it)\ndoesn't require a multi-node cluster.\n\nK3s proved the abstraction can compress without losing its properties."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/6\n\nWhen k3s appears everywhere, a new problem emerges:\n\nHow do you manage 50 k3s clusters across edge sites?\n\nThe answer can't be \"manually SSH into each one.\"\nThe answer has to be: treat clusters the same way K8s treats pods.\n\nDeclare what clusters you want.\nLet the system reconcile toward that."
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/6\n\nk3k: Kubernetes clusters inside Kubernetes\n\nk3k runs Kubernetes clusters as workloads on an existing cluster.\nCluster as a Resource.\n\n→ Provision a new K8s cluster: kubectl apply\n→ Delete it: kubectl delete\n→ Scale the control plane: it's just a deployment\n\nThe concept: cluster lifecycle becomes part of your existing GitOps workflow."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/6\n\nWhy this matters for platform engineering:\n\nWithout k3k: each cluster is a snowflake.\nManual provisioning. Manual upgrades. Manual deletion.\n\nWith k3k: clusters become declarative, versionable, automatable.\n\nPlatform teams stop being \"cluster admins\"\nand start being \"cluster operators\" —\nsame shift that happened with app deployments when Docker arrived."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/6\n\nThe recursion pattern:\n\nPhysical machine → managed by KVM (resource pool)\nContainer → managed by K8s (declared, reconciled)\nCluster → managed by k3k (declared, reconciled)\n\nEvery generation: the previous layer becomes a resource\nthat the next layer can schedule, scale, and recycle.\n\n\"You're not delivering apps. You're delivering replicable computing order.\"\n\n#Platform #k3k #k3s #Kubernetes #CloudNeutral #Engineering"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "OpenStack — 私有云还值得投资吗",
+    "source_file": "week-09.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | OpenStack\n\nLayer: Platform Foundation — Private Cloud IaaS\n\nOne-line verdict:\nThe private cloud standard. Proven, complex,\nand exactly right for specific organizations.\n\nWhat it does:\n→ Full IaaS: compute (Nova), networking (Neutron), storage (Cinder/Swift)\n→ Multi-tenant, multi-region private cloud\n→ OpenStack API compatible with many tools\n→ CNCF/Linux Foundation ecosystem integration\n→ Enterprise deployment: large banks, telcos, research institutions\n\n✅ Strong fit:\n– Organizations with significant on-prem hardware investment\n– Regulated industries requiring data sovereignty\n– Telecoms / national infrastructure operators\n– Environments needing cloud-like APIs on owned hardware\n\n⚠️ Real trade-offs:\n– Operational complexity: requires dedicated platform team\n– Steep learning curve — not a weekend project\n– Upgrade cycles are complex and risky\n– Many have migrated to K8s + Harvester for simpler IaaS\n\nThe honest assessment:\nOpenStack isn't for everyone.\nBut for large-scale, regulated, hardware-owning organizations —\nit remains the most mature open-source IaaS platform.\n\n#OpenStack #PrivateCloud #CloudNeutral #IaaS #Infrastructure"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-17",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "边缘计算不是新概念，是工程下沉",
+    "source_file": "week-09.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "\"Edge computing\" sounds like a new concept.\n\nIt's not. It's the same problem restated:\n\nWhere does the compute need to be\nfor this workload to work?\n\nSometimes the answer is: next to the data (edge).\nSometimes: centralized (cloud).\nSometimes: distributed but controlled (k3s + k3k).\n\nThe important realization:\n\nKubernetes at the edge isn't about making K8s \"cool.\"\nIt's about extending the same declarative model —\nthe one that works in the data center —\nto constrained environments.\n\nSame intent. Different container.\n\nk3s proved: the abstraction compresses.\nk3k proved: clusters can be resources too.\n\nThe next shift: you stop thinking about where compute runs.\nYou declare what you need, and the system finds where.\n\nWe're not there yet. But the trajectory is clear.\n\n#Edge #Kubernetes #k3s #Platform #CloudNeutral #Engineering"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-18",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "Trivy — 供应链安全扫描",
+    "source_file": "week-10.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Trivy\n\nLayer: Identity & Security — Supply Chain Security\n\nOne-line verdict:\nVulnerability scanning for container images, repos, IaC —\none tool, one format, no cloud lock-in.\n\nWhat it does:\n→ Scans container images for CVEs (OS packages + app dependencies)\n→ Scans Git repos, filesystems, IaC (Terraform, K8s YAML)\n→ SBOM generation (Software Bill of Materials)\n→ Secret scanning in code and images\n→ K8s-native: scan running clusters, not just images\n\n✅ Strong fit:\n– CI/CD pipeline security gate (image scan before push)\n– Infrastructure-as-Code misconfiguration detection\n– Supply chain security baseline for any team\n– Cloud-neutral: runs anywhere, reports to anything\n\n⚠️ Real trade-offs:\n– False positive rate requires tuning\n– Doesn't replace runtime security (see Falco for that)\n– Enterprise features (policy management at scale) need integration work\n\nThe key insight:\nSecurity scanning doesn't require a vendor.\nTrivy is FOSS, integrates with any CI/CD, produces standard SARIF output.\n\nThe pipeline is yours. The security data is yours.\n\n#Security #Trivy #DevSecOps #SupplyChain #CloudNative #SBOM"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-20",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "Milvus vs Qdrant：向量数据库选型",
+    "source_file": "week-10.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/6 🧵\n\nYou're building a RAG pipeline.\nYou need a vector database.\n\nMilvus or Qdrant?\n\nBoth are open-source. Both are production-ready.\nThe choice depends on scale and architecture.\n\nHere's the practical comparison 👇\n\n#VectorDB #RAG #AI #MLOps #CloudNeutral"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/6\n\nMilvus: designed for scale\n\n→ Distributed architecture from day one\n→ Handles billions of vectors\n→ Cloud-native (K8s native, separate storage/compute)\n→ Multiple index types (IVF, HNSW, DiskANN)\n→ LF AI & Data Foundation project\n\nBest for: large-scale production RAG, multi-tenant vector search,\nenterprise data platform with vector capabilities.\n\n⚠️ Overhead: requires MinIO, etcd, Pulsar — heavy for small deployments."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/6\n\nQdrant: designed for developer experience\n\n→ Written in Rust — high performance, low memory\n→ Single binary for development, scales for production\n→ Payload filtering (filter by metadata + vector similarity simultaneously)\n→ Built-in sparse vector support (hybrid search)\n→ Clean REST + gRPC API\n\nBest for: teams building AI products quickly,\nhybrid search (keyword + semantic), smaller-to-medium scale.\n\n⚠️ Distributed mode is newer than Milvus — less battle-tested at extreme scale."
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/6\n\nThe decision matrix:\n\nScale > 100M vectors + enterprise deployment?\n→ Milvus\n\nDeveloper velocity + hybrid search (metadata filter + vector)?\n→ Qdrant\n\nAlready have PostgreSQL and want to avoid another service?\n→ pgvector first (PG extension, no extra infra)\n\nBuilding proof of concept?\n→ Qdrant (single binary, fast start)"
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/6\n\nThe pgvector option:\n\nBefore choosing either — have you tried pgvector?\n\nIf your data is already in PostgreSQL:\n→ pgvector adds vector similarity search as an extension\n→ No additional infrastructure\n→ Same ACID guarantees, same backup strategy\n→ Works well up to ~10M vectors (with tuning)\n\nFor most product-scale RAG workloads,\npgvector is sufficient and dramatically simpler."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/6\n\nBottom line:\n\nStart here: pgvector (if data is already in PG)\nProof of concept: Qdrant (single binary, fast)\nProduction scale: Qdrant (up to ~50M vectors) or Milvus (100M+)\n\nCloud-neutral note:\nBoth Milvus and Qdrant run on your infra.\nNeither requires a cloud-specific service.\n\nYour AI data stack shouldn't be a vendor lock-in point.\n\n#VectorDB #RAG #AI #CloudNeutral #Milvus #Qdrant #pgvector"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-22",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "Apache Flink — 流处理真实边界",
+    "source_file": "week-10.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Apache Flink\n\nLayer: Data & AI — Stream Processing\n\nOne-line verdict:\nWhen your data problem is time, not just volume —\nFlink processes it as it arrives.\n\nWhat it does:\n→ Stateful stream processing at scale\n→ Event-time semantics — handle late-arriving data correctly\n→ Exactly-once guarantees — financial-grade correctness\n→ Unified batch + stream API\n→ K8s native deployment (Flink Kubernetes Operator)\n\n✅ Strong fit:\n– Real-time analytics (fraud detection, metrics, alerting)\n– Event-driven architectures with complex state\n– CDC pipelines (Debezium → Flink → target)\n– Replacing Spark for latency-sensitive workloads\n\n⚠️ Real trade-offs:\n– Steep learning curve (stateful operators, watermarks, checkpointing)\n– Operational complexity — requires real expertise\n– Not a batch ETL replacement unless you're already stream-processing\n\nThe boundary:\nBatch (Spark, dbt): transform historical data\nStream (Flink): react to data as it happens\n\nBoth have their place. Don't use Flink if batch is sufficient.\nReach for Flink when latency is the constraint.\n\n#ApacheFlink #StreamProcessing #DataEngineering #CloudNative #RealTime"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-24",
+    "weekday": "周日",
+    "kind": "longform",
+    "topic": "Solo 独立开发：AI 协作工程实录",
+    "source_file": "week-10.md",
+    "preferred_time": "21:00",
+    "goal": "traffic",
+    "cta": "read / click-through",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "Over the past year I've been using AI as a daily collaborator\nwhile building distributed systems solo.\n\nNot a demo. Not a tutorial.\nHere's what actually happened:\n\n→ The system grew beyond what I could hold in my head.\n   Auth, RAG server, database, frontend — 4 services, 1 person.\n\n→ The bottleneck wasn't code generation.\n   It was maintaining context across sessions,\n   across debugging sessions that span browser + GitHub + Cloud Run.\n\n→ What changed my workflow:\n   Using AI that persists system understanding,\n   not just reads files.\n   The debugging happens in the real environment.\n   Not in an isolated conversation.\n\nThe result:\nLogin, signup, MFA, AI assistant — all restored.\nUI is still rough (working on it 😅).\n\nBut the loop is closed:\nSolo founder. Distributed services. Maintained without a team.\n\nThis is what the next generation of solo building looks like.\n\n#SoloDev #IndieDev #AI #Architecture #CloudNative"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-25",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "Harvester — 超融合私有云",
+    "source_file": "week-11.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | SUSE Harvester\n\nLayer: Platform Foundation — HCI / Virtualization on K8s\n\nOne-line verdict:\nHyperconverged infrastructure, K8s-native.\nVMs and containers on the same platform, same API.\n\nWhat it does:\n→ KubeVirt-based: runs VMs as Kubernetes workloads\n→ Longhorn storage built-in — distributed block storage\n→ Rancher integration for multi-cluster management\n→ Bare metal provisioning with PXE boot\n→ Open-source, Apache 2.0\n\n✅ Strong fit:\n– Organizations migrating from VMware looking for OSS HCI\n– On-prem environments needing both VMs and containers\n– Edge deployments where a single platform manages compute\n– Rancher-based platform teams\n\n⚠️ Real trade-offs:\n– Newer project — less battle-tested than VMware/Nutanix at enterprise scale\n– SUSE ecosystem integration is strong, but standalone use has rougher edges\n– Storage (Longhorn) has known limitations for very high IOPS workloads\n\nThe cloud-neutral angle:\nHarvester + K8s = on-prem private cloud without vendor lock-in.\nNo vSphere license. No Nutanix contract. Just Linux, KVM, and Kubernetes.\n\n#Harvester #HCI #Kubernetes #PrivateCloud #CloudNeutral #OpenSource"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-27",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "从 Solo Builder 到平台工程",
+    "source_file": "week-11.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/7 🧵\n\nPlatform engineering isn't about team size.\n\nIt starts the moment you ask:\n\"Why am I doing this the same way for the third time?\"\n\nHere's how the shift happens — from solo builder to platform thinking 👇\n\n#Platform #DevOps #Engineering #SoloDev #CloudNative"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/7\n\nStage 1: You build one thing.\n\nSingle app. Single deployment script. Single environment.\nYou hold all the context in your head.\nThis works. It should work. Don't over-engineer it.\n\nThe moment it stops working:\nWhen you copy-paste the same setup for a second project."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/7\n\nStage 2: You notice repetition.\n\nSame CI/CD pattern.\nSame secrets management setup.\nSame Terraform module structure.\nSame monitoring config.\n\nThis is the platform signal.\nNot \"we need a platform team.\"\nJust: \"this should be a template, not a ritual.\""
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/7\n\nStage 3: You extract the common layer.\n\nTerraform modules for standard infra patterns.\nHelm charts for standard deployment patterns.\nShared Argo CD app templates.\nReusable GitHub Actions workflows.\n\nThe platform isn't a product.\nIt's codified experience — your own accumulated knowledge\nmade reusable without re-explaining it."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/7\n\nStage 4: The platform becomes a contract.\n\n\"To deploy a new service, you fill in this template.\"\n\"Standard monitoring comes with the deployment. You don't configure it.\"\n\"Secrets management: here's the pattern.\"\n\nThe platform handles the 80% that's the same for every service.\nThe builder focuses on the 20% that's actually unique."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/7\n\nWhat makes this cloud-neutral:\n\nThe platform contract shouldn't be defined by a vendor.\nIt should be defined by your engineering decisions.\n\nK8s + Argo CD + Prometheus + Vault + PostgreSQL.\nEach choice is replaceable. The contract remains.\n\nWhen the platform is built on open standards,\nmigrating a component doesn't break the platform."
+      },
+      {
+        "index": 7,
+        "kind": "reply",
+        "text": "7/7\n\nThe platform mindset shifts:\n\nBefore: \"How do I deploy this app?\"\nAfter: \"What should deploying any app look like?\"\n\nBefore: \"How do I monitor this service?\"\nAfter: \"What's the monitoring contract for all services?\"\n\nThis isn't about scale.\nIt's about moving from solving problems repeatedly\nto building a system that solves them once.\n\n#Platform #Engineering #CloudNeutral #DevOps #IaC"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-29",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "KVM/QEMU — 虚拟化的工程底座",
+    "source_file": "week-11.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | KVM / QEMU\n\nLayer: Platform Foundation — Virtualization\n\nOne-line verdict:\nThe virtualization layer under almost everything.\nNot the tool you interact with — the one everything runs on.\n\nWhat it does:\n→ KVM: Linux kernel module, hardware-accelerated virtualization\n→ QEMU: device emulation layer, works with KVM for near-native performance\n→ Together: the foundation for most production hypervisors\n→ libvirt: management API used by OpenStack, Proxmox, Harvester\n\n✅ Strong fit:\n– Foundation for any self-managed virtualization stack\n– Private cloud IaaS (OpenStack, Proxmox, Harvester all use it)\n– Container-in-VM security isolation (kata containers)\n– Any environment where you own the hardware\n\n⚠️ Real trade-offs:\n– Not a product — requires management layer (libvirt, Harvester, Proxmox)\n– Direct management via qemu-img / virsh requires expertise\n– Not a replacement for K8s — different layer\n\nThe cloud-neutral angle:\nEvery major public cloud runs on hypervisors.\nKVM/QEMU lets you run the same foundational layer on your own hardware.\n\nPrivate cloud is not \"running your own AWS.\"\nIt's choosing where your virtualization boundary lives.\n\n#KVM #QEMU #Virtualization #PrivateCloud #CloudNeutral #Linux"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-31",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "平台工程不是团队扩张，是复杂性归位",
+    "source_file": "week-11.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "Platform engineering is not about building an internal cloud.\n\nIt's about one specific thing:\nputting complexity where it belongs.\n\nEvery organization accumulates complexity.\nThe question is: who carries it?\n\nWithout platform thinking:\n→ Every team figures out deployment independently\n→ Every service has a different monitoring setup\n→ Every engineer re-learns the same infrastructure patterns\n→ Cognitive load grows with headcount\n\nWith platform thinking:\n→ Common problems are solved once\n→ Teams consume standard contracts, not re-invent them\n→ The platform carries the infrastructure complexity\n→ Engineers focus on product complexity\n\nThis isn't about tooling.\nArgo CD, Terraform, Vault, Prometheus can all be part of it.\nBut the tools are just implementations of the model.\n\nThe model: move complexity to where it can be maintained centrally,\nso that teams at the edges can operate with minimal cognitive overhead.\n\n\"Platform is the org's immune system for complexity.\"\n\n#Platform #Engineering #DevOps #CloudNative #Architecture"
+      }
+    ]
+  },
+  {
+    "date": "2026-06-01",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "Cosign — 镜像签名与供应链信任",
+    "source_file": "week-12.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Cosign (Sigstore)\n\nLayer: Identity & Security — Supply Chain Trust\n\nOne-line verdict:\nSigning container images used to require GPG expertise.\nCosign made it a one-line command.\n\nWhat it does:\n→ Signs container images and artifacts with private keys or keyless flow\n→ Keyless signing: uses OIDC identity (GitHub Actions, Google, etc.) — no key management\n→ Transparency log (Rekor): public, tamper-evident record of signatures\n→ Integrates with OPA/Gatekeeper for K8s admission policy\n→ Part of Sigstore project — Linux Foundation\n\n✅ Strong fit:\n– CI/CD pipelines: sign on build, verify on deploy\n– K8s admission control: block unsigned images from running\n– Supply chain compliance (SLSA framework adoption)\n– Teams concerned about image tampering in registries\n\n⚠️ Real trade-offs:\n– Keyless flow requires OIDC setup\n– Admission controller integration adds deployment complexity\n– Still maturing in enterprise adoption\n\nThe key insight:\nAn unsigned container image is a promise without a signature.\nYou're trusting the registry, not the builder.\n\nCosign answers: \"Did this image come from where I think it came from?\"\n\n#Cosign #Sigstore #SupplyChain #DevSecOps #Kubernetes #CloudNative"
+      }
+    ]
+  },
+  {
+    "date": "2026-06-03",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "Cloud-Neutral 工具图谱总览",
+    "source_file": "week-12.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/6 🧵\n\n12 weeks. 24 Radar cards. 8 Threads.\n\nHere's the full Cloud-Neutral infrastructure map —\nthe tools that let you build without being owned by a vendor.\n\nThe complete architecture 👇\n\n#CloudNeutral #CloudNative #Architecture #Platform #DevOps"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/6\n\nLayer 1: Identity & Security\n\nThe first thing that gets locked in is often identity.\n\n→ Keycloak / ZITADEL — auth & SSO (open, portable)\n→ Vault — secrets management (no hardcoded credentials)\n→ Cosign / Trivy — supply chain security\n→ SPIFFE/SPIRE — workload identity (zero-trust)\n→ Dex — OIDC federation\n\nIf your identity stack is a vendor SaaS:\nyou don't own the key to your own system."
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/6\n\nLayer 2: IaC & Delivery\n\nHow changes reach production defines how fast you can move.\n\n→ Terraform / OpenTofu — infra state as code\n→ Pulumi — infra as real code\n→ Argo CD / FluxCD — GitOps delivery\n→ Ansible — configuration management\n→ Teleport — secure access to infra (audited, cloud-neutral)\n\nThe principle: every change should be reviewable, reversible, and traceable."
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/6\n\nLayer 3: Runtime & Boundary\n\nWhere your workloads actually run.\n\n→ Kubernetes — the orchestration standard\n→ containerd — the runtime\n→ Cilium / Calico — network policy (eBPF / traditional)\n→ APISIX / Nginx — API gateway / reverse proxy\n→ k3s / k3k — lightweight K8s for edge and platform\n\nThe principle: workloads should be portable.\nThe infra layer should be replaceable."
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/6\n\nLayer 4: Observability\n\nYou can't fix what you can't see.\n\n→ OpenTelemetry — instrumentation standard (vendor-agnostic)\n→ Prometheus — metrics collection\n→ VictoriaMetrics — long-term storage at scale\n→ Grafana — visualization\n→ Loki / Vector / VictoriaLogs — log aggregation\n\nThe principle: observability data shouldn't be locked in a SaaS.\nYou should own the pipelines and the storage."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/6\n\nLayer 5: Data & AI\n\nThe data layer is where lock-in is most dangerous.\n\n→ PostgreSQL (+ extensions) — the data anchor\n→ ClickHouse — real-time analytics\n→ DuckDB — embedded analytics\n→ Milvus / Qdrant — vector search\n→ Apache Flink — stream processing\n\nCloud-neutral principle applied to data:\nYour database should run on your terms.\nNot on a cloud provider's pricing model.\n\n---\n\nThe full stack is documented at:\ngithub.com/cloud-neutral-\n\n#CloudNeutral #Architecture #Platform #Engineering"
+      }
+    ]
+  },
+  {
+    "date": "2026-06-05",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "SPIFFE/SPIRE — 零信任身份基础",
+    "source_file": "week-12.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | SPIFFE / SPIRE\n\nLayer: Identity & Security — Workload Identity\n\nOne-line verdict:\nEvery service needs to prove who it is.\nSPIFFE defines the standard. SPIRE implements it.\n\nWhat it does:\n→ SPIFFE: open standard for service identity (SVID = X.509 cert)\n→ SPIRE: production implementation of SPIFFE\n→ Automatically issues and rotates short-lived certificates\n→ Works across cloud, on-prem, and hybrid environments\n→ Kubernetes-native + multi-platform support\n\n✅ Strong fit:\n– Zero-trust architectures (mTLS between every service)\n– Multi-cloud / hybrid environments needing consistent identity\n– Replacing static credentials with rotating certificates\n– Service mesh foundation (Istio, Envoy, Linkerd can use SPIFFE)\n\n⚠️ Real trade-offs:\n– Complex to operate and tune\n– Requires PKI understanding\n– Overkill for small, single-environment deployments\n\nThe problem it solves:\nIn a distributed system, how does Service A prove to Service B\nthat it's actually Service A — and not an attacker?\n\nIP address: not reliable (dynamic, spoofable)\nShared secret: needs rotation, gets leaked\nSPIFFE: short-lived, cryptographically verifiable, automatically rotated\n\n\"Zero trust starts with workload identity.\"\n\n#SPIFFE #SPIRE #ZeroTrust #Security #CloudNative #mTLS"
+      }
+    ]
+  },
+  {
+    "date": "2026-06-07",
+    "weekday": "周日",
+    "kind": "opinion",
+    "topic": "12 周后，什么没变",
+    "source_file": "week-12.md",
+    "preferred_time": "21:00",
+    "goal": "worldview",
+    "cta": "reply / discuss",
+    "asset_type": "quote-card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "12 weeks of cloud-neutral infrastructure content.\n24 Radar cards. 8 Threads.\n\nHere's what didn't change in any of it:\n\n→ The principles hold, not the tools.\n\nKubernetes may be replaced.\nPrometheus may be superseded.\nTerraform may give way to something better.\n\nBut the principles:\n– Declare intent, let systems reconcile.\n– Own your data. Own your identity. Own your secrets.\n– Avoid lock-in not because vendors are evil,\n  but because flexibility is cheaper to build upfront.\n– Complexity doesn't disappear — it moves.\n  Your job is to put it where you can manage it.\n\n→ The question isn't \"which tool.\"\n\nThe question is: which decisions are reversible,\nand which ones compound into constraints?\n\nCloud-neutral isn't a tech choice.\nIt's a posture: stay movable, stay auditable, stay in control.\n\nThanks for following along.\nThe backlog has more.\n\n#CloudNeutral #Engineering #Architecture #Platform #DevOps"
+      }
+    ]
+  },
+  {
+    "date": "2026-03-30",
+    "weekday": "周一",
+    "kind": "radar",
+    "topic": "VictoriaMetrics — 高性能指标存储",
+    "source_file": "week-13.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | VictoriaMetrics\n\nLayer: Observability — Long-term Metrics Storage\n\nOne-line verdict:\nPrometheus wrote the contract.\nVictoriaMetrics optimized the storage.\n\nWhat it does:\n→ Drop-in replacement for Prometheus long-term storage\n→ Single-node handles millions of samples/sec\n→ Clustering for horizontal scale\n→ 10x compression vs Prometheus\n→ Compatible with PromQL, Grafana, Prometheus alerts\n\n✅ Strong fit:\n– Teams outgrowing single-node Prometheus\n– Cost-sensitive monitoring at scale\n– Need > 30 days retention without 10x storage cost\n– Cloud-native: runs anywhere, no vendor lock-in\n\n⚠️ Real trade-offs:\n– Not a full Prometheus replacement for all use cases\n– Clustering adds operational complexity\n– Less mature ecosystem than Thanos/Mimir\n\nThe key insight:\nPrometheus won because it defined the metrics standard.\nVictoriaMetrics wins because it solves the storage cost problem\nwithout breaking that standard.\n\n\"Keep the contract. Optimize the implementation.\"\n\n#Observability #VictoriaMetrics #Prometheus #Monitoring #CloudNative"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-01",
+    "weekday": "周三",
+    "kind": "thread",
+    "topic": "Pulumi vs Terraform：IaC 选型对比",
+    "source_file": "week-13.md",
+    "preferred_time": "21:00",
+    "goal": "growth",
+    "cta": "RT / follow",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "1/6 🧵\n\nTerraform or Pulumi?\n\nBoth do Infrastructure as Code.\nBoth manage cloud resources.\nBut they answer a different fundamental question:\n\n\" What is the source of truth for your infrastructure? \"\n\nHere's the real difference 👇\n\n#IaC #Terraform #Pulumi #DevOps #CloudNative"
+      },
+      {
+        "index": 2,
+        "kind": "reply",
+        "text": "2/6\n\nTerraform: declarative configuration (HCL)\n\nYou write: \"I want an S3 bucket with these properties\"\nTerraform figures out: \"Create, modify, or destroy these resources in this order\"\n\nPros:\n→ Language designed for infra (readable, structured)\n→ Massive provider ecosystem\n→ Plan output is human-readable\n\nCons:\n→ Learning HCL is learning a new language\n→ Complex logic requires workaround patterns\n→ State management can be painful at scale"
+      },
+      {
+        "index": 3,
+        "kind": "reply",
+        "text": "3/6\n\nPulumi: real programming languages\n\nYou write: TypeScript, Python, Go, C# — your infrastructure code\nPulumi reads your code, creates an execution plan, runs it\n\nPros:\n→ Use real languages: loops, conditionals, testing, IDE support\n→ Share code via packages\n→ Same language for infra and app logic\n\nCons:\n→ Team needs language expertise\n→ Smaller community than Terraform\n→ Some edge cases in drift detection"
+      },
+      {
+        "index": 4,
+        "kind": "reply",
+        "text": "4/6\n\nThe real question isn't \"which is better.\"\n\nIt's: \"Who maintains your infrastructure code?\"\n\nTerraform: best when your team includes dedicated infra engineers\nwho write HCL day-in, day-out\n\nPulumi: best when your app developers also own infrastructure\nand want to use familiar languages"
+      },
+      {
+        "index": 5,
+        "kind": "reply",
+        "text": "5/6\n\nMigration reality:\n\nSwitching isn't just \"translating\" the code.\nIt's changing how your team thinks about infra.\n\nTerraform plan → visual, reviewable, shareable\nPulumi program → testable, composable, programmatic\n\nBoth can work. The question is which mental model fits your org."
+      },
+      {
+        "index": 6,
+        "kind": "reply",
+        "text": "6/6\n\nPractical recommendation:\n\nStart small:\n→ Terraform if infra is a dedicated team's responsibility\n→ Pulumi if developers should own their infra too\n\nThe real trap:\nUsing \"infrastructure as code\" as a buzzword\nwithout answering: who's actually writing and maintaining it?\n\nThat's the decision that matters.\n\n#IaC #Terraform #Pulumi #Platform #Engineering"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-03",
+    "weekday": "周五",
+    "kind": "radar",
+    "topic": "Kong — API 网关企业选择",
+    "source_file": "week-13.md",
+    "preferred_time": "09:00",
+    "goal": "establish-positioning",
+    "cta": "bookmark / follow",
+    "asset_type": "card",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "🔍 Cloud-Neutral Radar | Kong\n\nLayer: Runtime & Boundary — API Gateway\n\nOne-line verdict:\nThe API gateway that grew into a service platform.\nBattle-tested at massive scale, but not the only answer.\n\nWhat it does:\n→ API gateway: rate limiting, auth, routing, transformation\n→ Plugins: 100+ built-in (OAuth, JWT, rate-limit, logging, etc.)\n→ Declarative config: Kong declarative config / K8s Ingress\n→ Service mesh: Kuma integration\n→ Multiple deployment modes: DB-less, traditional, Kubernetes\n\n✅ Strong fit:\n– Organizations needing mature, documented API management\n– Teams with existing Kong investment\n– Complex routing and transformation requirements\n– Enterprise features (RBAC, audit logs) out of the box\n\n⚠️ Real trade-offs:\n– More complex than simple Nginx reverse proxy\n– Plugin ecosystem can create dependency lock-in\n– Performance overhead vs bare Nginx/APISIX\n– Operational knowledge required\n\nThe honest assessment:\nKong is the \"enterprise answer\" to API gateways.\nIf you need the features, it's worth it.\nIf you just need routing + basic auth, simpler options exist.\n\n\"Not every gateway needs to be a platform.\"\n\n#Kong #APIGateway #Microservices #CloudNative #API"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-05",
+    "weekday": "周日",
+    "kind": "longform",
+    "topic": "从物理机到 K8s：复杂性管理史",
+    "source_file": "week-13.md",
+    "preferred_time": "21:00",
+    "goal": "traffic",
+    "cta": "read / click-through",
+    "asset_type": "diagram",
+    "status": "⬜",
+    "items": [
+      {
+        "index": 1,
+        "kind": "post",
+        "text": "From bare metal to Kubernetes:\n\nA 40-year history of one thing:\nhow we manage complexity in computing.\n\n→ Physical machines: one app per server, massive waste\n→ Virtualization: KVM/QEMU, share hardware, keep OS isolation\n→ Containers: Docker, package the environment not the machine\n→ Kubernetes: declare desired state, let the system reconcile\n→ k3s/k3k: the same model, compressed for edge\n\nEvery layer abstraction didn't eliminate complexity.\nIt moved it.\n\nThe real insight:\n\nWe're not delivering applications.\nWe're delivering replicable computing order.\n\nFull analysis 👇\n\n[Link to essay]\n\n#Engineering #History #Kubernetes #CloudNative #Platform"
+      }
+    ]
+  }
+]

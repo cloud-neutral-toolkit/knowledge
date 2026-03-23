@@ -1,0 +1,62 @@
+[
+  {
+    "name": "x-publish-build-daily",
+    "schedule": { "kind": "cron", "expr": "30 8 * * *", "tz": "Asia/Shanghai" },
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Run these commands in /Users/shenlan/workspaces/cloud-neutral-toolkit/knowledge/threads and summarize results briefly: python automation/x_publish.py build-queue && python automation/image_suggester.py suggest",
+      "timeoutSeconds": 900
+    },
+    "sessionTarget": "isolated",
+    "enabled": true,
+    "delivery": { "mode": "announce" }
+  },
+  {
+    "name": "x-publish-mon-radar",
+    "schedule": { "kind": "cron", "expr": "0 9 * * 1", "tz": "Asia/Shanghai" },
+    "payload": {
+      "kind": "agentTurn",
+      "message": "In /Users/shenlan/workspaces/cloud-neutral-toolkit/knowledge/threads, run a safe dry-run first: python automation/x_publish.py publish-today --dry-run . If xurl is authenticated and the user has approved automatic posting, run: X_PUBLISH_CONFIRM=YES python automation/x_publish.py publish-today && python automation/x_publish.py sync-status-to-md . Otherwise report the blocker.",
+      "timeoutSeconds": 900
+    },
+    "sessionTarget": "isolated",
+    "enabled": true,
+    "delivery": { "mode": "announce" }
+  },
+  {
+    "name": "x-publish-wed-thread",
+    "schedule": { "kind": "cron", "expr": "0 21 * * 3", "tz": "Asia/Shanghai" },
+    "payload": {
+      "kind": "agentTurn",
+      "message": "In /Users/shenlan/workspaces/cloud-neutral-toolkit/knowledge/threads, run a safe dry-run first: python automation/x_publish.py publish-today --dry-run . If xurl is authenticated and the user has approved automatic posting, run: X_PUBLISH_CONFIRM=YES python automation/x_publish.py publish-today && python automation/x_publish.py sync-status-to-md . Otherwise report the blocker.",
+      "timeoutSeconds": 1200
+    },
+    "sessionTarget": "isolated",
+    "enabled": true,
+    "delivery": { "mode": "announce" }
+  },
+  {
+    "name": "x-publish-fri-radar",
+    "schedule": { "kind": "cron", "expr": "0 9 * * 5", "tz": "Asia/Shanghai" },
+    "payload": {
+      "kind": "agentTurn",
+      "message": "In /Users/shenlan/workspaces/cloud-neutral-toolkit/knowledge/threads, run a safe dry-run first: python automation/x_publish.py publish-today --dry-run . If xurl is authenticated and the user has approved automatic posting, run: X_PUBLISH_CONFIRM=YES python automation/x_publish.py publish-today && python automation/x_publish.py sync-status-to-md . Otherwise report the blocker.",
+      "timeoutSeconds": 900
+    },
+    "sessionTarget": "isolated",
+    "enabled": true,
+    "delivery": { "mode": "announce" }
+  },
+  {
+    "name": "x-publish-sun-opinion",
+    "schedule": { "kind": "cron", "expr": "0 21 * * 0", "tz": "Asia/Shanghai" },
+    "payload": {
+      "kind": "agentTurn",
+      "message": "In /Users/shenlan/workspaces/cloud-neutral-toolkit/knowledge/threads, run a safe dry-run first: python automation/x_publish.py publish-today --dry-run . If xurl is authenticated and the user has approved automatic posting, run: X_PUBLISH_CONFIRM=YES python automation/x_publish.py publish-today && python automation/x_publish.py sync-status-to-md . Otherwise report the blocker.",
+      "timeoutSeconds": 900
+    },
+    "sessionTarget": "isolated",
+    "enabled": true,
+    "delivery": { "mode": "announce" }
+  }
+]

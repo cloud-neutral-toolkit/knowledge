@@ -1,0 +1,877 @@
+[
+  {
+    "date": "2026-03-16",
+    "topic": "Terraform / OpenTofu",
+    "kind": "radar",
+    "source_file": "week-01.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Terraform / OpenTofu",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Terraform / OpenTofu",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Terraform / OpenTofu』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-03-18",
+    "topic": "Serverless DB 迁移 0-1-100",
+    "kind": "thread",
+    "source_file": "week-01.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "Serverless DB 迁移 0-1-100",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "Serverless DB 迁移 0-1-100",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Serverless DB 迁移 0-1-100』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-03-20",
+    "topic": "PostgreSQL Extensions",
+    "kind": "radar",
+    "source_file": "week-01.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "PostgreSQL Extensions",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "PostgreSQL Extensions",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『PostgreSQL Extensions』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-03-22",
+    "topic": "云不是信仰，是工具",
+    "kind": "opinion",
+    "source_file": "week-01.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "云不是信仰，是工具",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "云不是信仰，是工具",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『云不是信仰，是工具』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  },
+  {
+    "date": "2026-03-23",
+    "topic": "Cilium — eBPF 网络策略",
+    "kind": "radar",
+    "source_file": "week-02.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Cilium — eBPF 网络策略",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Cilium — eBPF 网络策略",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Cilium — eBPF 网络策略』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-03-25",
+    "topic": "《小红书下云》深度分析",
+    "kind": "longform",
+    "source_file": "week-02.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "《小红书下云》深度分析",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "《小红书下云》深度分析",
+        "traffic"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『《小红书下云》深度分析』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-03-27",
+    "topic": "Prometheus — 指标体系标准",
+    "kind": "radar",
+    "source_file": "week-02.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Prometheus — 指标体系标准",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Prometheus — 指标体系标准",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Prometheus — 指标体系标准』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-03-29",
+    "topic": "不要在 Stage 0 操心 Stage 100",
+    "kind": "opinion",
+    "source_file": "week-02.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "不要在 Stage 0 操心 Stage 100",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "不要在 Stage 0 操心 Stage 100",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『不要在 Stage 0 操心 Stage 100』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  },
+  {
+    "date": "2026-03-30",
+    "topic": "Argo CD — GitOps 交付边界",
+    "kind": "radar",
+    "source_file": "week-03.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Argo CD — GitOps 交付边界",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Argo CD — GitOps 交付边界",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Argo CD — GitOps 交付边界』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-01",
+    "topic": "从物理机到 K8s：复杂性管理史",
+    "kind": "thread",
+    "source_file": "week-03.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "从物理机到 K8s：复杂性管理史",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "从物理机到 K8s：复杂性管理史",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『从物理机到 K8s：复杂性管理史』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-04-03",
+    "topic": "Vault — Secrets 工程边界",
+    "kind": "radar",
+    "source_file": "week-03.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Vault — Secrets 工程边界",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Vault — Secrets 工程边界",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Vault — Secrets 工程边界』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-05",
+    "topic": "Kubernetes 不管理机器，它管理期望",
+    "kind": "opinion",
+    "source_file": "week-03.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "Kubernetes 不管理机器，它管理期望",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "Kubernetes 不管理机器，它管理期望",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『Kubernetes 不管理机器，它管理期望』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  },
+  {
+    "date": "2026-04-06",
+    "topic": "OpenTelemetry — 可观测性中立标准",
+    "kind": "radar",
+    "source_file": "week-04.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "OpenTelemetry — 可观测性中立标准",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "OpenTelemetry — 可观测性中立标准",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『OpenTelemetry — 可观测性中立标准』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-08",
+    "topic": "Solo Founder 的分布式服务边界",
+    "kind": "thread",
+    "source_file": "week-04.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "Solo Founder 的分布式服务边界",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "Solo Founder 的分布式服务边界",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Solo Founder 的分布式服务边界』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-04-10",
+    "topic": "APISIX — API 网关中立选择",
+    "kind": "radar",
+    "source_file": "week-04.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "APISIX — API 网关中立选择",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "APISIX — API 网关中立选择",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『APISIX — API 网关中立选择』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-12",
+    "topic": "《从物理机到云端》复杂性工程史",
+    "kind": "longform",
+    "source_file": "week-04.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "《从物理机到云端》复杂性工程史",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "《从物理机到云端》复杂性工程史",
+        "traffic"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『《从物理机到云端》复杂性工程史』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-13",
+    "topic": "ZITADEL — 身份认证现代选项",
+    "kind": "radar",
+    "source_file": "week-05.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "ZITADEL — 身份认证现代选项",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "ZITADEL — 身份认证现代选项",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『ZITADEL — 身份认证现代选项』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-15",
+    "topic": "ZITADEL vs Keycloak 选型对比",
+    "kind": "thread",
+    "source_file": "week-05.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "ZITADEL vs Keycloak 选型对比",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "ZITADEL vs Keycloak 选型对比",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『ZITADEL vs Keycloak 选型对比』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-04-17",
+    "topic": "Grafana — 可观测性可视化层",
+    "kind": "radar",
+    "source_file": "week-05.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Grafana — 可观测性可视化层",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Grafana — 可观测性可视化层",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Grafana — 可观测性可视化层』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-19",
+    "topic": "身份系统是你最不该锁死的东西",
+    "kind": "opinion",
+    "source_file": "week-05.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "身份系统是你最不该锁死的东西",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "身份系统是你最不该锁死的东西",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『身份系统是你最不该锁死的东西』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  },
+  {
+    "date": "2026-04-20",
+    "topic": "FluxCD — GitOps 另一种实现",
+    "kind": "radar",
+    "source_file": "week-06.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "FluxCD — GitOps 另一种实现",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "FluxCD — GitOps 另一种实现",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『FluxCD — GitOps 另一种实现』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-22",
+    "topic": "VictoriaMetrics vs Prometheus：真实边界",
+    "kind": "thread",
+    "source_file": "week-06.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "VictoriaMetrics vs Prometheus：真实边界",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "VictoriaMetrics vs Prometheus：真实边界",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『VictoriaMetrics vs Prometheus：真实边界』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-04-24",
+    "topic": "containerd — 容器运行时的边界",
+    "kind": "radar",
+    "source_file": "week-06.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "containerd — 容器运行时的边界",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "containerd — 容器运行时的边界",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『containerd — 容器运行时的边界』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-26",
+    "topic": "开源不是情怀，是工程决策",
+    "kind": "opinion",
+    "source_file": "week-06.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "开源不是情怀，是工程决策",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "开源不是情怀，是工程决策",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『开源不是情怀，是工程决策』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  },
+  {
+    "date": "2026-04-27",
+    "topic": "DuckDB — 当 OLAP 不需要集群",
+    "kind": "radar",
+    "source_file": "week-07.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "DuckDB — 当 OLAP 不需要集群",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "DuckDB — 当 OLAP 不需要集群",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『DuckDB — 当 OLAP 不需要集群』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-04-29",
+    "topic": "Pulumi vs Terraform：代码即基础设施",
+    "kind": "thread",
+    "source_file": "week-07.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "Pulumi vs Terraform：代码即基础设施",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "Pulumi vs Terraform：代码即基础设施",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Pulumi vs Terraform：代码即基础设施』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-05-01",
+    "topic": "ClickHouse — 实时分析的工程边界",
+    "kind": "radar",
+    "source_file": "week-07.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "ClickHouse — 实时分析的工程边界",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "ClickHouse — 实时分析的工程边界",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『ClickHouse — 实时分析的工程边界』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-03",
+    "topic": "AI 与工程写作链路实战",
+    "kind": "longform",
+    "source_file": "week-07.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "AI 与工程写作链路实战",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "AI 与工程写作链路实战",
+        "traffic"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『AI 与工程写作链路实战』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-04",
+    "topic": "Keycloak — 企业级身份管理",
+    "kind": "radar",
+    "source_file": "week-08.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Keycloak — 企业级身份管理",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Keycloak — 企业级身份管理",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Keycloak — 企业级身份管理』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-06",
+    "topic": "FluxCD vs Argo CD：GitOps 选型",
+    "kind": "thread",
+    "source_file": "week-08.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "FluxCD vs Argo CD：GitOps 选型",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "FluxCD vs Argo CD：GitOps 选型",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『FluxCD vs Argo CD：GitOps 选型』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-05-08",
+    "topic": "Nginx — 仍在边界上的反向代理",
+    "kind": "radar",
+    "source_file": "week-08.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Nginx — 仍在边界上的反向代理",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Nginx — 仍在边界上的反向代理",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Nginx — 仍在边界上的反向代理』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-10",
+    "topic": "GitOps 不是工具，是治理模型",
+    "kind": "opinion",
+    "source_file": "week-08.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "GitOps 不是工具，是治理模型",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "GitOps 不是工具，是治理模型",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『GitOps 不是工具，是治理模型』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  },
+  {
+    "date": "2026-05-11",
+    "topic": "k3s — 轻量 Kubernetes 的真实场景",
+    "kind": "radar",
+    "source_file": "week-09.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "k3s — 轻量 Kubernetes 的真实场景",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "k3s — 轻量 Kubernetes 的真实场景",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『k3s — 轻量 Kubernetes 的真实场景』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-13",
+    "topic": "K3s + k3k：把集群变成资源",
+    "kind": "thread",
+    "source_file": "week-09.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "K3s + k3k：把集群变成资源",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "K3s + k3k：把集群变成资源",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『K3s + k3k：把集群变成资源』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-05-15",
+    "topic": "OpenStack — 私有云还值得投资吗",
+    "kind": "radar",
+    "source_file": "week-09.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "OpenStack — 私有云还值得投资吗",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "OpenStack — 私有云还值得投资吗",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『OpenStack — 私有云还值得投资吗』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-17",
+    "topic": "边缘计算不是新概念，是工程下沉",
+    "kind": "opinion",
+    "source_file": "week-09.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "边缘计算不是新概念，是工程下沉",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "边缘计算不是新概念，是工程下沉",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『边缘计算不是新概念，是工程下沉』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  },
+  {
+    "date": "2026-05-18",
+    "topic": "Trivy — 供应链安全扫描",
+    "kind": "radar",
+    "source_file": "week-10.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Trivy — 供应链安全扫描",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Trivy — 供应链安全扫描",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Trivy — 供应链安全扫描』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-20",
+    "topic": "Milvus vs Qdrant：向量数据库选型",
+    "kind": "thread",
+    "source_file": "week-10.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "Milvus vs Qdrant：向量数据库选型",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "Milvus vs Qdrant：向量数据库选型",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Milvus vs Qdrant：向量数据库选型』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-05-22",
+    "topic": "Apache Flink — 流处理真实边界",
+    "kind": "radar",
+    "source_file": "week-10.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Apache Flink — 流处理真实边界",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Apache Flink — 流处理真实边界",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Apache Flink — 流处理真实边界』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-24",
+    "topic": "Solo 独立开发：AI 协作工程实录",
+    "kind": "longform",
+    "source_file": "week-10.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Solo 独立开发：AI 协作工程实录",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Solo 独立开发：AI 协作工程实录",
+        "traffic"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Solo 独立开发：AI 协作工程实录』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-25",
+    "topic": "Harvester — 超融合私有云",
+    "kind": "radar",
+    "source_file": "week-11.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Harvester — 超融合私有云",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Harvester — 超融合私有云",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Harvester — 超融合私有云』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-27",
+    "topic": "从 Solo Builder 到平台工程",
+    "kind": "thread",
+    "source_file": "week-11.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "从 Solo Builder 到平台工程",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "从 Solo Builder 到平台工程",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『从 Solo Builder 到平台工程』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-05-29",
+    "topic": "KVM/QEMU — 虚拟化的工程底座",
+    "kind": "radar",
+    "source_file": "week-11.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "KVM/QEMU — 虚拟化的工程底座",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "KVM/QEMU — 虚拟化的工程底座",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『KVM/QEMU — 虚拟化的工程底座』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-05-31",
+    "topic": "平台工程不是团队扩张，是复杂性归位",
+    "kind": "opinion",
+    "source_file": "week-11.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "平台工程不是团队扩张，是复杂性归位",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "平台工程不是团队扩张，是复杂性归位",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『平台工程不是团队扩张，是复杂性归位』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  },
+  {
+    "date": "2026-06-01",
+    "topic": "Cosign — 镜像签名与供应链信任",
+    "kind": "radar",
+    "source_file": "week-12.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "Cosign — 镜像签名与供应链信任",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "Cosign — 镜像签名与供应链信任",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Cosign — 镜像签名与供应链信任』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-06-03",
+    "topic": "Cloud-Neutral 工具图谱总览",
+    "kind": "thread",
+    "source_file": "week-12.md",
+    "suggestion": {
+      "asset_type": "diagram",
+      "title": "Cloud-Neutral 工具图谱总览",
+      "visual_style": "clean architecture diagram",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "3-step or layered system diagram",
+      "must_include": [
+        "Cloud-Neutral 工具图谱总览",
+        "trade-offs",
+        "stage / boundary / flow"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『Cloud-Neutral 工具图谱总览』的阶段、系统组件、流向与关键 trade-off，输出成图解提纲。"
+    }
+  },
+  {
+    "date": "2026-06-05",
+    "topic": "SPIFFE/SPIRE — 零信任身份基础",
+    "kind": "radar",
+    "source_file": "week-12.md",
+    "suggestion": {
+      "asset_type": "card",
+      "title": "SPIFFE/SPIRE — 零信任身份基础",
+      "visual_style": "tool radar card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "tool name + layer + verdict + trade-off",
+      "must_include": [
+        "SPIFFE/SPIRE — 零信任身份基础",
+        "establish-positioning"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼主题『SPIFFE/SPIRE — 零信任身份基础』最值得做成 Radar 卡片的 1 句 verdict、3 个能力点、2 个 trade-off。"
+    }
+  },
+  {
+    "date": "2026-06-07",
+    "topic": "12 周后，什么没变",
+    "kind": "opinion",
+    "source_file": "week-12.md",
+    "suggestion": {
+      "asset_type": "quote-card",
+      "title": "12 周后，什么没变",
+      "visual_style": "minimal quote card",
+      "palette": "dark neutral / cloud infra / blueprint accents",
+      "layout": "large statement + tiny attribution/footer",
+      "must_include": [
+        "12 周后，什么没变",
+        "@Cloud_Neutral"
+      ],
+      "notebooklm_prompt": "从相关文章中提炼支撑观点『12 周后，什么没变』的 3 个关键词和 1 句最适合上卡片的短句。"
+    }
+  }
+]

@@ -1,0 +1,34 @@
+account:
+  handle: Cloud_Neutral
+  profile_url: https://x.com/Cloud_Neutral
+
+schedule:
+  default_times:
+    周一: "09:00"
+    周三: "21:00"
+    周五: "09:00"
+    周日: "21:00"
+  timezone: Asia/Shanghai
+
+publish:
+  dry_run_default: true
+  require_confirm_env: X_PUBLISH_CONFIRM
+  state_file: automation/state/publish-state.json
+  queue_file: automation/build/publish-queue.json
+
+assets:
+  default_asset_type_by_kind:
+    radar: card
+    thread: diagram
+    opinion: quote-card
+    longform: screenshot
+  topic_rules:
+    - match: ["Terraform", "OpenTofu", "Prometheus", "Grafana", "Cilium", "Argo", "FluxCD"]
+      asset_type: card
+      brief_focus: "tool radar card with decision framing"
+    - match: ["migration", "0-1-100", "边界", "architecture", "K8s", "database"]
+      asset_type: diagram
+      brief_focus: "architecture / lifecycle diagram"
+    - match: ["观点", "不是", "工具", "信仰", "治理模型"]
+      asset_type: quote-card
+      brief_focus: "single-idea quote card"
